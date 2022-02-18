@@ -1,12 +1,23 @@
 const express = require("express");
-const { isAuthenticated } = require("../controllers/auth");
 const router = express.Router();
 const {isSignedIn,isAuthenticated,isAdmin} = require("../Controllers/auth");
 const {getUserById} = require("../Controllers/user");
 const {createMovie } = require("../Controllers/movie");
+const multer = require("multer");
+
+const fileStorageEngine = multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,"F://Memes//Movie");
+    },
+    filename:(req,file,cb)=>{
+        cb(null,file.originalname);
+    }
+})
+
+const upload = multer({storage:fileStorageEngine})
 
 router.param("userId",getUserById);
 
-router.post("/movie/create/:userId",isSignedIn,isAuthenticated,isAdmin,createMovie);
+router.post("/movie/create/:userId",isSignedIn,isAuthenticated,isAdmin,upload.single('photo'),createMovie);
 
 module.exports = router;

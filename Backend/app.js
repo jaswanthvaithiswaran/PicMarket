@@ -15,6 +15,7 @@ const authRoutes = require("./Routes/auth");
 const userRoutes = require("./Routes/user");
 const actorRoutes = require("./Routes/actor");
 const comedianRoutes = require("./Routes/comedian");
+const movieRoutes = require("./Routes/movie");
 //DB connection
 mongoose.connect(process.env.DATABASE,
     {
@@ -38,6 +39,7 @@ app.use("/api",authRoutes);
 app.use("/api",userRoutes);
 app.use("/api",actorRoutes);
 app.use("/api",comedianRoutes);
+app.use("/api",movieRoutes);
 //port
 const port = process.env.PORT;
 

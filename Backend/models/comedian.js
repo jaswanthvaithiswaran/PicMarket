@@ -7,7 +7,7 @@ const comedianSchema = new mongoose.Schema({
         trim:true,
         required:true
     },
-    photo:{
+    photo_location:{
        type:String,
        required:true
     }
