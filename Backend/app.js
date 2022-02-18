@@ -7,6 +7,14 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+
+
+//importing routes
+
+const authRoutes = require("./Routes/auth");
+const userRoutes = require("./Routes/user");
+const actorRoutes = require("./Routes/actor");
+const comedianRoutes = require("./Routes/comedian");
 //DB connection
 mongoose.connect(process.env.DATABASE,
     {
@@ -25,6 +33,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
+//Routes
+app.use("/api",authRoutes);
+app.use("/api",userRoutes);
+app.use("/api",actorRoutes);
+app.use("/api",comedianRoutes);
 //port
 const port = process.env.PORT;
 

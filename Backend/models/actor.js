@@ -7,9 +7,9 @@ const actorSchema = new mongoose.Schema({
         trim:true,
         required:true
     },
-    photo:{
-        data:Buffer,
-        contentType:String
+    photo_location:{
+        type:String,
+        required:true
     }
 },{timestamps:true})
 
