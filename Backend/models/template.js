@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const {ObjectId} = mongoose.Schema;
 
 const templateSchema = new mongoose.Schema({
-    photo:{
-        data:Buffer,
-        contentType:String
+    photo_location:{
+        type:String,
+        required:true
     },
     movie:{
         type:ObjectId,

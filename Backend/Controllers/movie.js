@@ -17,3 +17,27 @@ exports.createMovie = (req,res)=>{
         return res.json(movie);
     })
 }
+
+exports.getMovieById = (req,res,next,id)=>{
+    Movie.findById(id).exec((err,movie)=>{
+        if(err)
+        {
+            return res.status(400).json({
+                "error":"no Movie found with this id"
+            })
+        }
+        return res.json(movie);
+    })
+}
+
+exports.getMovies = (req,res)=>{
+    Movie.find().exec((err,movies)=>{
+        if(err)
+        {
+            return res.status(400).json({
+                "error":"No movies found in database"
+            })
+        }
+        return res.json(movies);
+    })
+}

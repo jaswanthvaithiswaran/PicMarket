@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {isSignedIn,isAuthenticated,isAdmin} = require("../Controllers/auth");
 const {getUserById} = require("../Controllers/user");
-const {createMovie } = require("../Controllers/movie");
+const {createMovie,getMovies,getMovieById } = require("../Controllers/movie");
 const multer = require("multer");
 
 const fileStorageEngine = multer.diskStorage({
@@ -17,7 +17,8 @@ const fileStorageEngine = multer.diskStorage({
 const upload = multer({storage:fileStorageEngine})
 
 router.param("userId",getUserById);
+router.param("movieId",getMovieById);
 
 router.post("/movie/create/:userId",isSignedIn,isAuthenticated,isAdmin,upload.single('photo'),createMovie);
-
+router.get("/movies",getMovies);
 module.exports = router;

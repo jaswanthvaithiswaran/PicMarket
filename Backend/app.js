@@ -16,6 +16,7 @@ const userRoutes = require("./Routes/user");
 const actorRoutes = require("./Routes/actor");
 const comedianRoutes = require("./Routes/comedian");
 const movieRoutes = require("./Routes/movie");
+const templateRoutes = require("./Routes/template");
 //DB connection
 mongoose.connect(process.env.DATABASE,
     {
@@ -40,6 +41,7 @@ app.use("/api",userRoutes);
 app.use("/api",actorRoutes);
 app.use("/api",comedianRoutes);
 app.use("/api",movieRoutes);
+app.use("/api",templateRoutes);
 //port
 const port = process.env.PORT;
 
