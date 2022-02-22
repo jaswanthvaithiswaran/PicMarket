@@ -3,7 +3,7 @@ export default function App() {
   return (
     <>
     <Menu/>
-    <h1 class="text-blue-900 font-bold italic">
+    <h1 class="text-blue-900 font-bold italic text-3xl">
       Hello world!
     </h1>
     </>
