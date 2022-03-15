@@ -1,0 +1,14 @@
+    [
+        {
+            "name":"vadivel",
+            "imgsrc":"F://Project//MemeTemplates//frontend//src//Memes//Comedian//Vadivel.jpg"
+        },
+        {
+            "name":"sivakarthikeyan",
+            "imgsrc":"F://Project//MemeTemplates//frontend//src//Memes//Actor//Sivakarthikeyan.png"
+        },
+        {
+            "name":"vijay",
+            "imgsrc":"F://Project//MemeTemplates//frontend//src//Memes//Actor//Vijay.webp"
+        }
+    ]
