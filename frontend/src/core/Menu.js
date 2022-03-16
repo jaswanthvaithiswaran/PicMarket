@@ -5,21 +5,23 @@ const Menu=()=>{
         
         <div className="flex bg-royal-blue ">
           <div className="w-1/2 h-14">
-            <h1 className="text-white text-left text-3xl text-bold  ml-14 mt-2">Meme Templates</h1>
+            <h1 className="text-white text-left text-3xl text-bold  ml-14 mt-2">
+              <a href="/">Meme Templates</a>
+            </h1>
           </div>
           <div className="w-1/2  h-14">
             <ul className="flex">
               <li className="mr-14 mt-3 ">
-                <a href="#" className="text-bold text-[#CAD5E2] text-center hover:text-white">Home</a>
+                <a href="/" className="text-bold text-white text-center hover:text-[#CAD5E2]">Home</a>
               </li>
               <li className="mr-14 mt-3">
-                <a href="#" className="text-bold text-[#CAD5E2] text-center hover:text-white">Signup</a>
+                <a href="/signup" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signup</a>
               </li>
               <li className="mr-14 mt-3">
-                <a href="#" className="text-bold text-[#CAD5E2] text-center hover:text-white">Login</a>
+                <a href="/signin" className="text-bold text-white text-center hover:text-[#CAD5E2]">Login</a>
               </li>
               <li className="mr-14 mt-3">
-                <a href="#" className="text-bold text-[#CAD5E2] text-center hover:text-white">Logout</a>
+                <a href="/signout" className="text-bold text-white text-center hover:text-[#CAD5E2]">Logout</a>
               </li>
               <li className="flex mr-14 mt-2">
               <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-5 py-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search templates" aria-label="Search" aria-describedby="button-addon2"/>
