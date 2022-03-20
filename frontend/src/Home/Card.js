@@ -9,7 +9,7 @@ const Card =({
     return(
         <div className="max-w-xs rounded-lg overflow-hidden shadow-lg m-10 ">
         <img className="w-full" src={imgsrc} alt="Sunset in the mountains"/>
-        <div className="bg-card">
+        <div className="bg-green-400">
         <div className="px-4 py-2 text-center">
           <div className="font-bold text-xl mb-2">{name}</div>
         </div>

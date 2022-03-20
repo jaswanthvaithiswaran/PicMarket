@@ -4,10 +4,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        'royal-blue':'#383CC1',
-        'card':'#0CF97F',
-      }
+      
     },
   },
   plugins: [],

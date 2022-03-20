@@ -1,15 +1,18 @@
 import Menu from "./Menu";
-import React, { Children } from "react";
+import React from "react";
 
 const Base = ({
-    children,
+    className="",
+    children
 })=>{
     return(
         <>
         <Menu/>
-        <div>
+        <div className={className}>
             {children}
         </div>
+        
         </>
     )
 }
+export default Base;

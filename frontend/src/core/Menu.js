@@ -1,29 +1,57 @@
+import { Link } from "react-router-dom";
+import { isAuthenticated, signout } from "../Auth/helper/authapicalls";
 
 
-const Menu=()=>{
+
+const Menu=({
+  history
+})=>{
+
+  const logout = ()=>{
+      signout(()=>{
+        window.location.reload();
+      })
+  }
     return(
         
-        <div className="flex bg-royal-blue ">
-          <div className="w-1/2 h-14">
+        <div className="flex bg-blue-800 ">
+          <div className="w-1/3 h-14">
             <h1 className="text-white text-left text-3xl text-bold  ml-14 mt-2">
               <a href="/">Meme Templates</a>
             </h1>
           </div>
-          <div className="w-1/2  h-14">
+          <div className="w-2/3  h-14">
             <ul className="flex">
               <li className="mr-14 mt-3 ">
                 <a href="/" className="text-bold text-white text-center hover:text-[#CAD5E2]">Home</a>
               </li>
-              <li className="mr-14 mt-3">
-                <a href="/signup" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signup</a>
+
+              {!isAuthenticated()&& (
+                 <li className="mr-14 mt-3">
+                 <a href="/signup" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signup</a>
+               </li>
+              )}
+             
+              {!isAuthenticated()&& (
+                 <li className="mr-14 mt-3">
+                 <a href="/signin" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signin</a>
+               </li>
+              )}
+             
+
+              {isAuthenticated() && isAuthenticated().user.role===1 && (
+                <li className="mr-14 mt-3">
+                <Link to="/admin/dashboard" className="text-bold text-white text-center hover:text-[#CAD5E2]" >Admin Dashboard</Link>
+               </li>
+              )}
+              
+              {isAuthenticated()&& (
+                <li className="mr-14 mt-3">
+                <span className="text-bold text-white text-center hover:text-[#CAD5E2] cursor-pointer" onClick={logout}>Signout</span>
               </li>
-              <li className="mr-14 mt-3">
-                <a href="/signin" className="text-bold text-white text-center hover:text-[#CAD5E2]">Login</a>
-              </li>
-              <li className="mr-14 mt-3">
-                <a href="/signout" className="text-bold text-white text-center hover:text-[#CAD5E2]">Logout</a>
-              </li>
-              <li className="flex mr-14 mt-2">
+              )}
+             
+              <li className=" flex ml-60 mt-2">
               <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-5 py-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search templates" aria-label="Search" aria-describedby="button-addon2"/>
               <button class="btn px-4 py-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
