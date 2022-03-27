@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 
 
 import Base from "../core/Base";
-import { signin,authenticate, isAuthenticated } from "./helper/authapicalls";
+import { signin,authenticate, isAuthenticated } from "./authapicalls";
 const Signin = ()=>{
     
     const [values,setValues] = useState({
@@ -27,14 +27,18 @@ const Signin = ()=>{
         setValues({...values,error:false,loading:true})
         signin({email,password})
         .then(data=>{
-            if(data.error){
-                setValues({...values,error:data.error,loading:false})
+            console.log(data);
+            if(data.error)
+            {
+                setValues({...values,error:data.error});
             }
-            else{
+            else
+            {
                 authenticate(data,()=>{
                     setValues({...values,didRedirect:true})
                 })
             }
+        
         })
         .catch(console.log("Signin failed"))
     }
