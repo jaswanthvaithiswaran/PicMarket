@@ -1,4 +1,4 @@
-import {API} from "../../backend";
+import {API} from "../backend";
 
 export const signup = user=>{
     return fetch(`${API}/signup`,{
@@ -16,6 +16,8 @@ export const signup = user=>{
 }
 
 export const signin = user=>{
+    
+    console.log(API);
     return fetch(`${API}/signin`,{
         method:"POST",
         headers:{

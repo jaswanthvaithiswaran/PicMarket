@@ -1,6 +1,6 @@
 import React from "react";
 import { Route,Redirect } from "react-router-dom";
-import {isAuthenticated} from "./authapicalls";
+import {isAuthenticated} from "../authapicalls";
 
 const AdminRoutes = ({component:Component,...rest})=>{
 
