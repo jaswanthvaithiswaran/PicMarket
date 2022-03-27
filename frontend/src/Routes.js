@@ -5,6 +5,8 @@ import Signup from "./Auth/Signup";
 import Signin from "./Auth/Signin";
 import AdminRoutes from "./Auth/helper/AdminRoutes";
 import AdminDashboard from "./Admin/AdminDashboard";
+import CreateMovie from "./Movies/CreateMovie";
+
 const Routes = ()=>{
     return(
         <BrowserRouter>
@@ -13,6 +15,7 @@ const Routes = ()=>{
             <Route path="/signup" exact component={Signup}/>
             <Route path="/signin" exact component={Signin}/>
             <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard}/>
+            <AdminRoutes path="/movies/create" exact component={CreateMovie}/>
         </Switch>
         </BrowserRouter>
     )

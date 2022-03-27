@@ -18,24 +18,24 @@ const Menu=({
         <div className="flex bg-blue-800 ">
           <div className="w-1/3 h-14">
             <h1 className="text-white text-left text-3xl text-bold  ml-14 mt-2">
-              <a href="/">Meme Templates</a>
+              <Link to="/">Meme templates</Link>
             </h1>
           </div>
           <div className="w-2/3  h-14">
             <ul className="flex">
               <li className="mr-14 mt-3 ">
-                <a href="/" className="text-bold text-white text-center hover:text-[#CAD5E2]">Home</a>
+                <Link to="/" className="text-bold text-white text-center hover:text-[#CAD5E2]">Home</Link>
               </li>
 
               {!isAuthenticated()&& (
                  <li className="mr-14 mt-3">
-                 <a href="/signup" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signup</a>
+                  <Link to="/signin" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signin</Link>
                </li>
               )}
              
               {!isAuthenticated()&& (
                  <li className="mr-14 mt-3">
-                 <a href="/signin" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signin</a>
+                  <Link to="/signup" className="text-bold text-white text-center hover:text-[#CAD5E2]">Signup</Link>
                </li>
               )}
              
