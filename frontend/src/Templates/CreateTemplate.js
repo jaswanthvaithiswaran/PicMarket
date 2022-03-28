@@ -1,34 +1,23 @@
 import React from "react";
 import Base from "../core/Base";
+const CreateTemplate = () => {
+    const createTemplateForm = ()=>{
 
-
-const CreateMovie = () => {
-
-
-    const createMovieForm = () => {
         return(
-           
-            
-
-                <div className="grid grid-cols-3 gap-7 mt-20 mb-20">
+            <div className="grid grid-cols-3 gap-7 mt-20 mb-20">
                     <div ></div>
 
                     <div className="bg-slate-100  rounded-lg shadow-lg">
 
-                        <div className=" text-3xl text-black  text-center mt-4">
-                            CreateMovie form
+                        <div className=" text-3xl text-black  text-center mt-4 ">
+                            CreateTemplate form
                         </div>
+
+                        
 
                         <div class="mb-4 ml-8 mt-10">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="moviename">
-                                Movie name
-                            </label>
-                            <input type="text" placeholder="Movie name" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10"/>
-                        </div>
-
-                        <div class="mb-4 ml-8 ">
                         <label class="block">
-                            <label className="text-gray-700 test-sm font-bold mb-2">Movie picture </label>
+                            <label className="text-gray-700 test-sm font-bold mb-2">Template picture </label>
     
                             <span class="sr-only">Choose profile photo</span>
                             <input type="file" class="block w-full text-sm text-slate-500
@@ -55,6 +44,13 @@ const CreateMovie = () => {
                             </select>
                         </div>
 
+                        <div className="mb-4 ml-8">
+                            <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" for="comedian"> movie </label>
+                            <select name="" className="p-2 bg-white relative rounded text-sm w-3/4">
+                                <option value="">Select movie</option>
+                            </select>
+                        </div>
+
                         <div className="mb-4 ml-80 mt-10 ">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">Submit</button>
                         </div>
@@ -63,16 +59,12 @@ const CreateMovie = () => {
 
                     <div></div>
                 </div>
-
-           
-            
-            
         )
     }
     return(
         <Base>
-       {createMovieForm()}
-       </Base>
+        {createTemplateForm()}
+        </Base>
     )
 }
-export default CreateMovie;
+export default CreateTemplate;
