@@ -17,6 +17,6 @@ const fileStorageEngine = multer.diskStorage({
 const upload = multer({storage:fileStorageEngine})
 router.param("userId",getUserById);
 router.param("actorId",getComedianById);
-router.post("/comedian/create/:userId",isSignedIn,isAuthenticated,isAdmin,upload.single('photo'),createComedian);
+router.post("/comedian/create/:userId",isSignedIn,isAuthenticated,isAdmin,createComedian);
 router.get("/comedians",getComedians);
 module.exports = router;

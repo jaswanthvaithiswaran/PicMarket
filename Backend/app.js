@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
+const fileupload = require("express-fileupload")
 
 
 //importing routes
@@ -34,6 +34,12 @@ mongoose.connect(process.env.DATABASE,
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(fileupload({
+    useTempFiles:true,
+    tempFileDir:"./tmp/"
+}));
 
 //Routes
 app.use("/api",authRoutes);

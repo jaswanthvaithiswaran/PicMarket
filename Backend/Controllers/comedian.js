@@ -2,18 +2,11 @@ const Comedian = require("../models/comedian");
 
 
 exports.createComedian = (req,res)=>{
-    comedian = new Comedian();
-    comedian.name = req.body.name;
-    comedian.photo_location = "F://Memes//Actor//"+req.file.originalname;
-    comedian.save((err,comedian)=>{
-        if(err)
-        {
-            return res.status(400).json({
-                "error":"Failed to save comedian in database"
-            })
-        }
-        return res.json(comedian);
-    });
+    
+    console.log(req.body);
+    console.log(req.files);
+
+    return res.send(req.body);
     
 }
 
