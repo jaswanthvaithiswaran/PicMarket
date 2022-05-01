@@ -1,12 +1,30 @@
 const Comedian = require("../models/comedian");
 
-
-exports.createComedian = (req,res)=>{
+const cloudinary = require("cloudinary").v2;    //cloudinary is a node module
+exports.createComedian = async (req,res)=>{
     
-    console.log(req.body);
-    console.log(req.files);
 
-    return res.send(req.body);
+    let file = req.files.photo.tempFilePath;
+    result = await cloudinary.uploader.upload(file,{
+        folder:"Comedians"
+    })
+   
+    const comedian = new Comedian();
+    comedian.name = req.body.name;
+    comedian.photo_location = result.secure_url;
+
+    comedian.save((err,comedian)=>{
+        if(err)
+        {
+            console.log(err);
+            return res.status(400).json({
+                "error":err
+            })
+        }
+        res.json(comedian);
+    });
+
+
     
 }
 

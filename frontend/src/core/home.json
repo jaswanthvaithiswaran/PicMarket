@@ -1,0 +1,22 @@
+[
+    {
+        "name":"Vivek",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651385551/Comedians/fxsyk8ds0foayte8m96y.avif",
+        "link":"/comedian/vivek"
+    },
+    {
+        "name":"Goundamani",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651385674/Comedians/cx5fcdv3jqpnyxppxdol.jpg",
+        "link":"/comedian/goundamani"
+    },
+    {
+        "name":"Vadivelu",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651386114/Comedians/lpty1jralw9qdcji6hch.jpg",
+        "link":"/comedian/vadivelu"
+    },
+    {
+        "name":"Santhanam",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651388307/Comedians/ad0kixiia1jkvxuzufth.jpg",
+        "link":"/comedian/santhanam"
+    }
+]

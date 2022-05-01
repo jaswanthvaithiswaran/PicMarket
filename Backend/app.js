@@ -30,6 +30,10 @@ mongoose.connect(process.env.DATABASE,
     }
     );
 
+
+//view engine
+app.set("view engine","ejs");
+
 //middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -37,9 +41,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(fileupload({
-    useTempFiles:true,
-    tempFileDir:"./tmp/"
+   useTempFiles:true,
+    tempFileDir:'./tmp/'
 }));
+
 
 //Routes
 app.use("/api",authRoutes);
@@ -51,6 +56,27 @@ app.use("/api",templateRoutes);
 //port
 const port = process.env.PORT;
 
+
+//test
+app.get("/myget",(req,res)=>{
+    console.log(req.body);
+    return res.send(req.body);
+})
+
+app.post("/mypost",(req,res)=>{
+    console.log(req.body);
+    console.log(req.files);
+    return res.send(req.body);
+})
+
+app.get("/testget",(req,res)=>{
+    
+    res.render("testget");
+})
+
+app.get("/postform",(req,res)=>{
+    res.render("postform");
+})
 //connection with port
 app.listen(port,()=>{
     console.log(`app is running at ${port}`);

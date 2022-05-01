@@ -1,14 +1,15 @@
 import {API} from "../backend";
-export const createComedian = (userId,token,comedian)=>{
 
-    return fetch(`${API}/comedian/create/${userId}`,{
+
+export const createActor = (userId,token,actor)=>{
+
+    return fetch(`${API}/actor/create/${userId}`,{
         method:"POST",
         headers:{
             Accept:"application/json",
-            
             Authorization:`Bearer ${token}`
         },
-        body: comedian
+        body: actor
     })
     .then(response=>{
         return response.json();

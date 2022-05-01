@@ -1,13 +1,32 @@
 import React from "react";
 import Card from "../Home/Card";
 import Base from "../core/Base";
+import data from "./home.json";
+import { Link } from "react-router-dom";
 
 const  Home=()=> {
+
+
+
+ 
+
+  
+
+  console.log(data);
+
   return (
     <Base className="bg-grey-700">
-      
       <div className="flex">
-            <Card  name={"vadivel"}/>
+        {data.map((item,index)=>{
+            return(
+                <Link to={`/comedian/${item.name}`} key={index}>
+                <Card 
+                name={item.name}
+                imgsrc={item.imgsrc}
+                />
+                </Link>
+            )
+        })}
       </div>
       
     </Base>

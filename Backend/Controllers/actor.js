@@ -1,18 +1,25 @@
 const Actor = require("../models/actor");
+const cloudinary = require('cloudinary').v2;
 
+exports.createActor = async(req,res)=>{
+    let file = req.files.photo.tempFilePath;
 
-exports.createActor = (req,res)=>{
-    actor = new Actor();
+    result = await cloudinary.uploader.upload(file,{
+        folder:"Actors"
+    })
+    
+    const actor = new Actor();
     actor.name = req.body.name;
-    actor.photo_location = "F://Memes//Actor//"+req.file.originalname;
+    actor.photo_location = result.secure_url;
+
     actor.save((err,actor)=>{
-        if(err)
-        {
+        if(err){
+            console.log(err);
             return res.status(400).json({
-                "error":"Failed to save actor in database"
+                "error":"failed to save actor in database"
             })
         }
-        return res.json(actor);
+        res.json(actor);
     });
     
 }
