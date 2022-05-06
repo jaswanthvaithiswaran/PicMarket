@@ -17,3 +17,14 @@ export const createActor = (userId,token,actor)=>{
     .catch(err=> console.log(err));
 
 }
+
+export const getActors = ()=>{
+    return fetch(`${API}/actors`,{
+        method:"GET",
+        headers:{
+            Accept:"application/json",
+        }
+    })
+    .then(response=>response.json())
+    .catch(err=>console.log(err))
+}

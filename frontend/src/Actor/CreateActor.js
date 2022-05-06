@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import { isAuthenticated } from "../Auth/authapicalls";
 import Base from "../core/Base";
 import { createActor } from "./actorapicalls";
@@ -10,14 +10,14 @@ const CreateActor = ()=>{
     const [values,setValues] = useState({
         name:"",
         photo:"",
-        formData:"",
+        formData:new FormData(),
         AddedActor:"",
         error:"",
         successMessageclass:"hidden text-2xl text-black place-content-center",
         errorMessageclass:"hidden text-2xl text-black place-content-center"
     });
 
-    const {name,photo,formData,AddedActor,successMessageclass,error,errorMessageclass} = values;
+    const {name,formData,AddedActor,successMessageclass,error,errorMessageclass} = values;
     const onSubmit = event=>{
         event.preventDefault();
         for(var pair of formData.entries()) {
@@ -34,12 +34,8 @@ const CreateActor = ()=>{
         })
     }
 
-    const preload = ()=>{
-        setValues({...values,formData:new FormData()});
-    }
-    useEffect(()=>{
-        preload();
-    },[])
+   
+   
     const handleChange = name => event => {
         const value = name ==="photo" ? event.target.files[0]: event.target.value;
         formData.set(name,value);

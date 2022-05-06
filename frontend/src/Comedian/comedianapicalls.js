@@ -16,3 +16,14 @@ export const createComedian = (userId,token,comedian)=>{
     .catch(err=> console.log(err));
 
 }
+
+export const getComedians = ()=>{
+    return fetch(`${API}/comedians`,{
+        method:"GET",
+        headers:{
+            Accept:"application/json",
+        }
+    })
+    .then(response=>response.json())
+    .catch(err=>console.log(err))
+}

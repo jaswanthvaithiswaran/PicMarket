@@ -1,15 +1,19 @@
 const Movie = require("../models/movie");
+const cloudinary = require('cloudinary').v2;
+exports.createMovie = async (req,res)=>{
+    let file = req.files.photo.tempFilePath;
 
-exports.createMovie = (req,res)=>{
+    result = await cloudinary.uploader.upload(file,
+        {folder:"movies"})
     movie = new Movie();
     movie.name = req.body.name;
-    movie.photo_location = "F://Memes//Actor//"+req.file.originalname;
     movie.actor = req.body.actor;
     movie.comedian = req.body.comedian;
+    movie.photo_location = result.secure_url;
 
     movie.save((err,movie)=>{
-        if(err)
-        {
+        if(err){
+            console.log(err);
             return res.status(400).json({
                 "error":"failed to save movie in database"
             })

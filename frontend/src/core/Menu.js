@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated, signout } from "../Auth/authapicalls";
 
 
@@ -8,11 +8,7 @@ const Menu=({
   history
 })=>{
 
-  const logout = ()=>{
-      signout(()=>{
-        window.location.reload();
-      })
-  }
+  
     return(
         
         <div className="flex bg-blue-800 ">
@@ -48,7 +44,11 @@ const Menu=({
               
               {isAuthenticated()&& (
                 <li className="mr-14 mt-3">
-                <span className="text-bold text-white text-center hover:text-[#CAD5E2] cursor-pointer" onClick={logout}>Signout</span>
+                <span className="text-bold text-white text-center hover:text-[#CAD5E2] cursor-pointer" onClick={()=>{
+                  signout(()=>{
+                    <Redirect to ="/"/>
+                  })
+                }}>Signout</span>
               </li>
               )}
              
