@@ -64,17 +64,18 @@ const CreateMovie = () => {
     }
     useEffect(()=>{
         loadActors();
-        console.log(actors)
+        
 
     },[]);
     useEffect(()=>{
         loadComedians();
-        console.log(comedians);
+        
     },[]);
    
   
     const onSubmit = event => {
        event.preventDefault();
+       console.log("submitted");
        createMovies(user._id,token,formData)
        .then(data=>{
            if(data.error)
@@ -97,6 +98,8 @@ const CreateMovie = () => {
             </center>
         )
     }
+
+ 
 
     const createMovieForm = () => {
         return(
@@ -149,7 +152,8 @@ const CreateMovie = () => {
                             </select>
                         </div>
 
-                        <div className="mb-4 ml-8">
+                        <div className="mb-4 ml-8 comedians">
+                            <div className="comedian">
                             <label className="block text-gray-700 text-sm font-bold mb-2" > Comedian </label>
                             <select name="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("comedian")}>
                                 <option value="">Select comedian</option>
@@ -159,7 +163,10 @@ const CreateMovie = () => {
                                     )
                                 })}
                             </select>
+                            </div>
                         </div>
+
+                      
 
                         <div className="mb-4 ml-80 mt-10 ">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onClick={onSubmit}>Submit</button>

@@ -14,3 +14,16 @@ export const createMovies = (userId, token, movie) => {
     })
     .catch(err => console.log(err));
 }
+
+export const getMovies = () => {
+    return fetch(`${API}/movies/`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+        }
+    })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err));
+}

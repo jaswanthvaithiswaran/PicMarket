@@ -12,14 +12,14 @@ const  Home=()=> {
 
   
 
-  console.log(data);
+
 
   return (
     <Base className="bg-grey-700">
       <div className="flex">
         {data.map((item,index)=>{
             return(
-                <Link to={`/comedian/${item.name}`} key={index}>
+                <Link to={`${item.link}`} key={index}>
                 <Card 
                 name={item.name}
                 imgsrc={item.imgsrc}

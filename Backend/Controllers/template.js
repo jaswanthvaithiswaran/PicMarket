@@ -1,20 +1,22 @@
 const Template = require("../models/template");
+const cloudinary = require("cloudinary").v2;
 
-
-exports.createTemplate = (req,res)=>{
+exports.createTemplate = async (req,res)=>{
     template = new Template();
+    console.log(req.body.movie);
+    let file = req.files.photo.tempFilePath;
+    result = await cloudinary.uploader.upload(file,{folder:"templates"});
     template.movie = req.body.movie;
-    template.keywords = req.body.keywords;
-    template.photo_location = "F://Memes//Actor//"+req.file.originalname;
+    template.photo_location = result.secure_url;
     template.save((err,template)=>{
-        if(err)
-        {
+        if(err){
+            console.log(err);
             return res.status(400).json({
-                "error":"failed to save template in database",
-                "message":err
+                "error":"failed to save template"
             })
         }
-        return res.json(template);
+        res.json(template);
     })
 
+   
 }

@@ -1,6 +1,7 @@
 const Comedian = require("../models/comedian");
-
+const Movies = require("../models/movie");
 const cloudinary = require("cloudinary").v2;    //cloudinary is a node module
+var ObjectId = require('mongodb').ObjectId;
 exports.createComedian = async (req,res)=>{
     
 
@@ -51,4 +52,24 @@ exports.getComedians = (req,res)=>{
         }
         return res.json(comedians);
     })
+}
+
+exports.getComedianMovies = (req,res)=>{
+    const comedianId = req.comedian._id;
+    const ObjectID = new ObjectId(comedianId);
+
+    console.log(ObjectID);
+    Movies.find({
+        "comedian":ObjectID
+    }).exec((err,movies)=>{
+        console.log(movies);
+        if(movies==null|| err)
+        {
+            return res.status(400).json({
+                "error":"no movies found for this comedian"
+            })
+        }
+        return res.json(movies);
+    })
+
 }

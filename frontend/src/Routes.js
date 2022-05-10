@@ -9,6 +9,7 @@ import CreateMovie from "./Movies/CreateMovie";
 import CreateComedian from "./Comedian/CreateComedian";
 import CreateActor from "./Actor/CreateActor";
 import CreateTemplate from "./Templates/CreateTemplate";
+import ComedianMovies from "./Comedian/ComedianMovies";
 const Routes = ()=>{
     return(
         <BrowserRouter>
@@ -16,6 +17,7 @@ const Routes = ()=>{
             <Route path="/" exact component={Home}/>
             <Route path="/signup" exact component={Signup}/>
             <Route path="/signin" exact component={Signin}/>
+            <Route path="/comedian/movies/:comedianId" exact component={ComedianMovies}/>
             <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard}/>
             <AdminRoutes path="/movies/create" exact component={CreateMovie}/>
             <AdminRoutes path="/comedian/create" exact component={CreateComedian}/>

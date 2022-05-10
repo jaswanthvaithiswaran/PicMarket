@@ -27,3 +27,14 @@ export const getComedians = ()=>{
     .then(response=>response.json())
     .catch(err=>console.log(err))
 }
+
+export const getComedianMovies = (comedianId)=>{
+    return fetch(`${API}/comedian/movies/${comedianId}`,{
+        method:"GET",
+        headers:{
+            Accept:"application/json",
+        }
+    })
+    .then(response=>response.json())
+    .catch(err=>console.log(err))
+}
