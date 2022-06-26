@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 
 
 import Base from "../core/Base";
@@ -61,7 +61,7 @@ const Signin = ()=>{
             <div className="bg-grey-lighter min-h-screen flex flex-col shadow-lg">
                         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                                <h1 className="mb-8 text-3xl text-center">Sign in</h1>
+                                <h1 className="mb-8 text-3xl text-center">Login</h1>
                                 
                                     
                                 <input 
@@ -88,9 +88,13 @@ const Signin = ()=>{
                                     className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"
                                     onClick={onSubmit}
                                 >Sign in</button>
-            
-                                
 
+                                <div className="additional flex mt-10">
+                                <div className=" text-left space-x-2 text-blue-600 ">forgot password?</div>
+                                <div className="text-right ml-[100px] text-blue-600 ">
+                                    <Link to="/signup">Sign up</Link>
+                                     </div>
+                                </div>
                             </div>
                               
                             </div>

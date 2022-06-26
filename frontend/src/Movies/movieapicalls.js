@@ -27,3 +27,16 @@ export const getMovies = () => {
     })
     .catch(err=>console.log(err));
 }
+
+export const getMovieTemplates = (movieId) => {
+    return fetch(`${API}/movie/templates/${movieId}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+        }
+    })
+    .then(response=>{
+        return response.json();
+    })
+    .catch(err=>console.log(err));
+}

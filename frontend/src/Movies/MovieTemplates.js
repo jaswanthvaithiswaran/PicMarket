@@ -1,18 +1,17 @@
 import React,{useState,useEffect} from "react";
-import { Link } from "react-router-dom";
-import { getComedianMovies } from "./comedianapicalls";
+import { getMovieTemplates } from "./movieapicalls";
 import Base from "../core/Base";
 import Card from "../Home/Card";
 
-const ComedianMovies =({match})=>{
+const MovieTemplates =({match})=>{
 
-    const [movies,setMovies] = useState([]);
+    const [templates,setTemplates] = useState([]);
     const [values,setValues] = useState({
         error:""
     })
     const {error} = values;
-    const loadComedianMovies = (comedianId)=>{
-        getComedianMovies(comedianId)
+    const loadMovieTemplates = (movieId)=>{
+        getMovieTemplates(movieId)
         .then(data => {
             if(data.error)
             {
@@ -20,7 +19,7 @@ const ComedianMovies =({match})=>{
                 console.log(data.error);
             }
             else{
-                setMovies(data);
+                setTemplates(data);
                 console.log(data);
             }
         })
@@ -28,19 +27,21 @@ const ComedianMovies =({match})=>{
     }
 
     useEffect(()=>{
-        loadComedianMovies(match.params.comedianId);
+        loadMovieTemplates(match.params.movieId);
     },[]);
     return(
         <Base className="bg-grey-700">
-        <div className="grid grid-cols-4">
-          {movies.map((movie,index)=>{
+        <div className="grid grid-cols-4 mt-[40px]">
+          {templates.map((template,index)=>{
               return(
-                  <Link to={`/movie/templates/${movie._id}`} key={index} className="ml-[45px] mt-10">
+                  
                   <Card 
-                  name={movie.name}
-                  imgsrc={movie.photo_location}
+                  className="ml-[45px] mt-10"
+                  name={template.name}
+                  imgsrc={template.photo_location}
+                  key={index}
                   />
-                  </Link>
+                  
               )
           })}
         </div>
@@ -48,4 +49,4 @@ const ComedianMovies =({match})=>{
       </Base>
     )
 }
-export default ComedianMovies;
+export default MovieTemplates;

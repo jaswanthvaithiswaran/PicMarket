@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from "react";
-
+import { Link } from "react-router-dom";
 import Base from "../core/Base";
 import { signup } from "./authapicalls";
 
@@ -144,9 +144,7 @@ const Signup = ()=>{
             
                                 <div className="text-gray-dark mt-6 bg-white text-center">
                                 Already have an account? 
-                                <a className="no-underline border-b border-blue text-blue-800 " href="/login">
-                                    Log in
-                                </a>.
+                                <Link to="/signin" className="text-blue-800 hover:text-blue-900">Login</Link>
                                 
 
                             </div>

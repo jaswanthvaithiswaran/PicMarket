@@ -1,5 +1,7 @@
 const Movie = require("../models/movie");
 const cloudinary = require('cloudinary').v2;
+const ObjectId = require('mongodb').ObjectId;
+const Templates = require("../models/template");
 exports.createMovie = async (req,res)=>{
     let file = req.files.photo.tempFilePath;
 
@@ -30,7 +32,8 @@ exports.getMovieById = (req,res,next,id)=>{
                 "error":"no Movie found with this id"
             })
         }
-        return res.json(movie);
+        req.movie = movie;
+        next();
     })
 }
 
@@ -44,4 +47,17 @@ exports.getMovies = (req,res)=>{
         }
         return res.json(movies);
     })
+}
+
+exports.getMovieTemplates = (req,res)=>{
+        const MovieId = req.movie._id;
+        const ObjectID = new ObjectId(MovieId);
+        Templates.find({movie:ObjectID}).exec((err,templates)=>{
+            if(err){
+                return res.status(400).json({
+                    "error":":No templates found in database"
+                })
+            }
+            return res.json(templates);
+        })
 }

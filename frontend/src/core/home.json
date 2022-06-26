@@ -6,17 +6,22 @@
     },
     {
         "name":"Goundamani",
-        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651385674/Comedians/cx5fcdv3jqpnyxppxdol.jpg",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1652252042/Comedians/Goundamani_EPS_Photo_nmteg5.avif",
         "link":"/comedian/movies/626e254eb08682523cad91fa"
     },
     {
         "name":"Vadivelu",
-        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651386114/Comedians/lpty1jralw9qdcji6hch.jpg",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1652252344/Comedians/vadivelu6nov09_L_vlqyub.avif",
         "link":"/comedian/movies/626e2705b08682523cad91fd"
     },
     {
         "name":"Santhanam",
-        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651388307/Comedians/ad0kixiia1jkvxuzufth.jpg",
-        "link":"/comedian/santhanam"
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/c_crop,g_face:auto,h_410,w_416/v1651388307/Comedians/ad0kixiia1jkvxuzufth.jpg",
+        "link":"/comedian/movies/626e2b8db08682523cad9200"
+    },
+    {
+        "name":"Vijay",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651398968/Actors/worw9qgzbdwavlobrmhb.avif",
+        "link":"/actor/movies/626e593928b08a3a542adc0c"
     }
 ]
