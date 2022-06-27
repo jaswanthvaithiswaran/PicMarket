@@ -4,7 +4,8 @@ const Card =({
   name="",
   keywords=[],
   imgsrc="",
-  classname=""
+  classname="",
+  cardtitle="",
 })=>{
   
     return(
@@ -14,7 +15,7 @@ const Card =({
             <div className="card 1">
             <div className="card_image"> <img src={imgsrc} /> </div>
             <div className="bg">
-            <div className="card_title title-white">
+            <div className={cardtitle}>
                 <p>{name}</p>
             </div>
             </div>

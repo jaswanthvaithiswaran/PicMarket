@@ -18,15 +18,18 @@ const  Home=()=> {
 
   return (
     <Base>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         {data.map((item,index)=>{
             return(
-                <Link to={`${item.link}`} key={index} className="ml-[45px] mt-10">
+              <div className="ml-[45px] mr-[45px]">
+                <Link to={`${item.link}`} key={index} className="">
                 <Card 
                 name={item.name}
                 imgsrc={item.imgsrc}
+                cardtitle="card_title title-white"
                 />
                 </Link>
+                </div>
             )
         })}
       </div>

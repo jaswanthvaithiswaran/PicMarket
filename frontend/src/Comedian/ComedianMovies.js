@@ -35,12 +35,15 @@ const ComedianMovies =({match})=>{
         <div className="grid grid-cols-4">
           {movies.map((movie,index)=>{
               return(
+                <div className="ml-[45px] mr-[45px]">
                   <Link to={`/movie/templates/${movie._id}`} key={index} className="ml-[45px] mt-10">
                   <Card 
                   name={movie.name}
                   imgsrc={movie.photo_location}
+                  cardtitle="card_title title-white"
                   />
                   </Link>
+                  </div>
               )
           })}
         </div>

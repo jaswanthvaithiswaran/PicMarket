@@ -40,7 +40,7 @@ const Signin = ()=>{
             }
         
         })
-        .catch(console.log("Signin failed"))
+        .catch(err=>console.log(err));
     }
     const performRedirect = ()=>{
         if(didRedirect)
@@ -88,7 +88,7 @@ const Signin = ()=>{
                                     className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"
                                     onClick={onSubmit}
                                 >Sign in</button>
-
+                                <p className="text-red-400 text-center">{error}</p>
                                 <div className="additional flex mt-10">
                                 <div className=" text-left space-x-2 text-blue-600 ">forgot password?</div>
                                 <div className="text-right ml-[100px] text-blue-600 ">

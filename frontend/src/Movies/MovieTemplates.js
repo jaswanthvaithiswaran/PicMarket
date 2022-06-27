@@ -31,16 +31,20 @@ const MovieTemplates =({match})=>{
     },[]);
     return(
         <Base className="bg-grey-700">
-        <div className="grid grid-cols-4 mt-[40px]">
+        <div className="grid grid-cols-4 ">
           {templates.map((template,index)=>{
               return(
-                  
+                  <div className="ml-[45px] mr-[45px] mt-[40px]">
+                    <a download={template.name} href={template.photo_location} >
                   <Card 
                   className="ml-[45px] mt-10"
                   name={template.name}
                   imgsrc={template.photo_location}
+                  
                   key={index}
                   />
+                  </a>
+                  </div>
                   
               )
           })}
