@@ -1,5 +1,20 @@
 [
     {
+        "name":"Movies",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1656781071/movies/cvku0wp5dekseyn0sbrh.webp",
+        "link":"/movies"
+    },
+    {
+        "name":"actors",
+        "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1656784039/Actors/jnavhxrf9dfayg5zzjmj.webp",
+        "link":"/actors"
+    },
+    {
+        "name":"daily-uploads",
+        "imgsrc":"",
+        "link":"/daily-uploads"
+    },
+    {
         "name":"Vivek",
         "imgsrc":"https://res.cloudinary.com/memetemplate/image/upload/v1651385551/Comedians/fxsyk8ds0foayte8m96y.avif",
         "link":"/comedian/movies/626e24d2b08682523cad91f7"
