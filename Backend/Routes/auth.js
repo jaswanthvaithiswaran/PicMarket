@@ -14,7 +14,7 @@ router.post("/signup",[
 
 router.post("/signin",[
     check("email").isEmail().withMessage("Enter a valid email"),
-    check("password").isLength({min:8}).withMessage("Minimum character length is 8")
+    
 ],signin);
 
 

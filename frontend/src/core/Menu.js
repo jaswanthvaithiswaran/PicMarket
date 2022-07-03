@@ -29,7 +29,7 @@ const Menu=({
               {!isAuthenticated()&& (
                 <Fragment>
                  <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
-                  <Link to="/signin" className="text-bold text-black text-center ">Signin</Link>
+                  <Link to="/signin" className="text-bold text-black text-center ">Login/Signup</Link>
                 </li>
                   </Fragment>
               )}

@@ -26,7 +26,7 @@ const  Home=()=> {
                 <Card 
                 name={item.name}
                 imgsrc={item.imgsrc}
-                
+               
                 />
                 </Link>
                 </div>
