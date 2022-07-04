@@ -3,7 +3,7 @@ import {useState} from "react";
 import { Link } from "react-router-dom";
 import Base from "../core/Base";
 import { signup } from "./authapicalls";
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const Signup = ()=>{
 
     const [values,setValues]=  useState(
@@ -98,6 +98,10 @@ const Signup = ()=>{
                         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                                 <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+                                <div className="flex">
+                                <label >Name</label>
+                                <FontAwesomeIcon icon="fa-solid fa-user" className="ml-3 mt-1" />
+                                </div>
                                 <input 
                                     type="text"
                                     className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -106,7 +110,11 @@ const Signup = ()=>{
                                     placeholder="Full Name"
                                     value={name}
                                      />
-                                    
+                                <div className="flex">
+                                <label >Email</label>
+                                <FontAwesomeIcon icon="fa-solid fa-envelope" className="ml-3 mt-1" />
+                                        
+                                </div>
                                 <input 
                                     type="text"
                                     className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -115,7 +123,11 @@ const Signup = ()=>{
                                     placeholder="Email"
                                     value={email}
                                      />
-            
+                                <div className="flex">
+                                <label >Password</label>
+                                <FontAwesomeIcon icon="fa-solid fa-key" className="ml-3 mt-1"/>
+                                        
+                                </div>
                                 <input 
                                     type="password"
                                     className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -124,6 +136,12 @@ const Signup = ()=>{
                                     placeholder="Password" 
                                     value={password}
                                     />
+                                <div className="flex">
+                                <label >Confirm Password</label>
+                                <FontAwesomeIcon icon="fa-solid fa-lock-open" className="ml-3 mt-1"/>
+                        
+                                </div>
+                                
                                 <input 
                                     type="password"
                                     className="block border border-grey-light w-full p-3 rounded mb-4"

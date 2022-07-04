@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated, signout } from "../Auth/authapicalls";
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 const Menu=({
@@ -14,21 +14,25 @@ const Menu=({
       <div className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
         <div className="">
         <div className="flex ">
-          <div className=" h-6 text-center lg:w-1/3 lg:h-12">
+          <div className=" w-2/3 h-6 text-center lg:w-1/4 lg:h-12">
             <h1 className="text-black text-left text-md lg:text-3xl text-bold  ml-6 mt-2">
               <Link to="/">Meme templates</Link>
             </h1>
           </div>
-          <div className="hidden h-8 w-1/3  lg:h-14  lg:block">
+         
+          <div className="hidden h-8 w-2/4  lg:h-14  lg:block">
             
             <ul className="flex">
+            
               <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+              <FontAwesomeIcon icon="fa-solid fa-house" className="mr-3"/>
                 <Link to="/" className="text-black text-center">Home</Link>
               </li>
 
               {!isAuthenticated()&& (
                 <Fragment>
                  <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                 <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="mr-3" />
                   <Link to="/signin" className="text-bold text-black text-center ">Login/Signup</Link>
                 </li>
                   </Fragment>
@@ -38,12 +42,14 @@ const Menu=({
 
               {isAuthenticated() && isAuthenticated().user.role===1 && (
                 <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                <FontAwesomeIcon icon="fa-solid fa-circle-user" className="mr-2"/>
                 <Link to="/admin/dashboard" className="text-bold text-black text-center " >Admin Dashboard</Link>
                </li>
               )}
               
               {isAuthenticated()&& (
                 <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" className="mr-2"/>
                 <span className="text-bold text-black text-center cursor-pointer" onClick={()=>{
                   signout(()=>{
                     console.log("ready to redirect");
@@ -56,7 +62,7 @@ const Menu=({
               
             </ul>
         </div>
-        <div className="searchbar mt-2 flex ml-9  w-1/3 ">
+        <div className="searchbar mt-2 flex ml-9  w-1/4 ">
                     <input type="search" className="form-control relative flex-auto min-w-0 block w-40 lg:w-60 lg:h-10 px-5 py-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search templates" aria-label="Search" aria-describedby="button-addon2"/>
                     <button className="btn lg:ml-2 lg:h-10 px-4 py-1 bg-blue-600 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

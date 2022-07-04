@@ -71,7 +71,7 @@ exports.signin = (req,res)=>{
         //password match authentication 
         else if(!user.authenticate(password)){
             return res.status(401).json({
-                error:"Invalid email or password"
+                error:"Invalid email id or password"
             })
         }
         //console.log("TOKEN CREATION");
