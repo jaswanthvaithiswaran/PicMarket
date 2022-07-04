@@ -36,4 +36,6 @@ export const getActorMovies = (actorId)=>{
             Accept:"application/json",
         }
     })
+    .then(response=>response.json())
+    .catch(err=>console.log(err))
 }
