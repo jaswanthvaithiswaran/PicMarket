@@ -1,5 +1,5 @@
 # MemeTemplate
-App still in production haven't completed
+App still in development haven't completed
 # Backend
  Backend built with nodejs and expressjs to run the program enter into the folder 
  ### `/Backend`
