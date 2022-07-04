@@ -1,6 +1,8 @@
-const Actor = require("../models/actor");
-const cloudinary = require('cloudinary').v2;
 
+const Actor = require("../models/actor");
+const Movies = require("../models/movie");
+const cloudinary = require('cloudinary').v2;
+var ObjectId = require('mongodb').ObjectId;
 exports.createActor = async(req,res)=>{
     let file = req.files.photo.tempFilePath;
 
@@ -46,5 +48,24 @@ exports.getActors = (req,res)=>{
             })
         }
         return res.json(actors);
+    })
+}
+exports.getActorMovies = (req,res)=>{
+    const actorId = req.actor._id;
+    const ObjectID = new ObjectId(actorId);
+
+    console.log(ObjectID);
+    Movies.find({
+        "actor":ObjectID
+    }).exec((err,movies)=>{
+        console.log(movies);
+        if(movies==null|| err)
+        {
+            return res.status(400).json({
+                "error":"no movies found for this actor"
+            })
+        }
+        
+        return res.json(movies);
     })
 }

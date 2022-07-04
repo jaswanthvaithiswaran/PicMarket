@@ -28,3 +28,12 @@ export const getActors = ()=>{
     .then(response=>response.json())
     .catch(err=>console.log(err))
 }
+
+export const getActorMovies = (actorId)=>{
+    return fetch(`${API}/actor/movies/${actorId}`,{
+        method:"GET",
+        headers:{
+            Accept:"application/json",
+        }
+    })
+}

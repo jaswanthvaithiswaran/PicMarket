@@ -1,33 +1,27 @@
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
-import { getComedianMovies } from "./comedianapicalls";
 import Base from "../core/Base";
 import Card from "../Home/Card";
+import { getActorMovies } from "./actorapicalls";
 
-const ComedianMovies =({match})=>{
+const ActorMovies = ({match})=>{
 
     const [movies,setMovies] = useState([]);
-   const [error,setError] = useState(false);
-    
-    const loadComedianMovies = (comedianId)=>{
-        getComedianMovies(comedianId)
+    const [error,setError] = useState(false);
+    const loadActorMovies = (actorId)=>{
+        getActorMovies(actorId)
         .then(data => {
-            if(data.error)
-            {
+            if (data.error) {
                 setError(data.error);
-                
-            }
-            else{
+            } else {
                 setMovies(data);
-                console.log(data);
             }
         })
-        .catch(err=>console.log(err));
     }
-
     useEffect(()=>{
-        loadComedianMovies(match.params.comedianId);
+        loadActorMovies(match.params.actorId);
     },[]);
+
     return(
         <Base className="bg-grey-700">
             <div className="grid grid-cols-4">
@@ -48,4 +42,4 @@ const ComedianMovies =({match})=>{
       </Base>
     )
 }
-export default ComedianMovies;
+export default ActorMovies;

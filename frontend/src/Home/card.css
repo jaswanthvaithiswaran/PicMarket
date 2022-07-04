@@ -10,7 +10,7 @@
     margin: 30px auto;
     width: 350px;
     height: 270px;
-    
+    border-radius: 50px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
     cursor: pointer;
     transition: 0.4s;
@@ -21,7 +21,7 @@
   .card .card_image {
     width: inherit;
     height: inherit;
-    
+    border-radius: 50px;
   }
   
   .card .card_image img {
@@ -29,6 +29,7 @@
     height: inherit;
     object-fit: fill;
     margin: auto;
+    border-radius: 50px;
   }
   
   .card .card_title {
