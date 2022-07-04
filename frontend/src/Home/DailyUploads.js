@@ -1,35 +1,30 @@
-import React,{useState,useEffect} from "react";
-import { getMovieTemplates } from "./movieapicalls";
-import Base from "../core/Base";
+import React,{useState,useEffect} from 'react';
+import Base from '../core/Base';
 import Card from "../Home/Card";
+import { getDailyUploads } from './dailyuploadsapi';
 
-const MovieTemplates =({match})=>{
+const DailyUploads = () => {
 
     const [templates,setTemplates] = useState([]);
-    const [values,setValues] = useState({
-        error:""
-    })
-    const {error} = values;
-    const loadMovieTemplates = (movieId)=>{
-        getMovieTemplates(movieId)
+    const [error,setError] = useState(false);
+
+   const  loadDailyUploads = ()=>{
+        getDailyUploads()
         .then(data => {
             if(data.error)
             {
-                setValues({...values,error:data.error})
-                console.log(data.error);
+                setError(data.error);
             }
             else{
                 setTemplates(data);
-                console.log(data);
             }
         })
-        .catch(err=>console.log(err));
     }
-
     useEffect(()=>{
-        loadMovieTemplates(match.params.movieId);
+        loadDailyUploads();
     },[]);
     return(
+
         <Base className="bg-grey-700">
         <div className="grid grid-cols-4 ">
           {templates.map((template,index)=>{
@@ -49,7 +44,7 @@ const MovieTemplates =({match})=>{
               )
           })}
         </div>
-      </Base>
+      </Base>        
     )
 }
-export default MovieTemplates;
+export default DailyUploads;

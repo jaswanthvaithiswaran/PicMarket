@@ -20,3 +20,18 @@ exports.createTemplate = async (req,res)=>{
 
    
 }
+
+exports.dailyUpload = (req,res)=>{
+    
+    Template.find({}).exec((err,templates)=>{
+        console.log(templates);
+        if(err)
+        {
+            return res.status(400).json({
+                "error":"no templates found"
+            })
+        }
+        return res.json(templates);
+    });
+
+}
