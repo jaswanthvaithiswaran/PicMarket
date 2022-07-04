@@ -16,7 +16,9 @@ const Card =({
             <div className="card_image"> <img src={imgsrc} /> </div>
             <div className="bg">
             <div className={cardtitle}>
+                <center>
                 <p>{name}</p>
+                </center>
             </div>
             </div>
         </div>

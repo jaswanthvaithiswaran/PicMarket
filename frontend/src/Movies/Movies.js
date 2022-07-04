@@ -37,7 +37,7 @@ const Movies = ()=>{
                 <Card 
                 name={movie.name}
                 imgsrc={movie.photo_location}
-                
+                cardtitle="card_title"
                 />
                 </Link>
                 </div>

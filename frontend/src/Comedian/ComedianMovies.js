@@ -40,7 +40,7 @@ const ComedianMovies =({match})=>{
                   <Card 
                   name={movie.name}
                   imgsrc={movie.photo_location}
-                  cardtitle="card_title title-white"
+                  cardtitle="card_title"
                   />
                   </Link>
                   </div>
