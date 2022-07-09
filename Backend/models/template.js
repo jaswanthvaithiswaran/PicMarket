@@ -11,7 +11,7 @@ const templateSchema = new mongoose.Schema({
         ref:"Movie",
         required:true
     },
-    keywords:{
+    _tags:{
         type:Array,
         default:[]
     }

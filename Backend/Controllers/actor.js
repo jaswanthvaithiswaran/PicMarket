@@ -40,7 +40,7 @@ exports.getActorById = (req,res,next,id)=>{
 }
 
 exports.getActors = (req,res)=>{
-    Actor.find().exec((err,actors)=>{
+    Actor.find().sort({"name":1}).exec((err,actors)=>{
         if(err)
         {
             return res.status(400).json({
@@ -57,8 +57,8 @@ exports.getActorMovies = (req,res)=>{
     console.log(ObjectID);
     Movies.find({
         "actor":ObjectID
-    }).exec((err,movies)=>{
-        console.log(movies);
+    }).sort({"name":1}).exec((err,movies)=>{
+        
         if(movies==null|| err)
         {
             return res.status(400).json({

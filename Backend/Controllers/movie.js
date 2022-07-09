@@ -38,7 +38,7 @@ exports.getMovieById = (req,res,next,id)=>{
 }
 
 exports.getMovies = (req,res)=>{
-    Movie.find().exec((err,movies)=>{
+    Movie.find({}).sort({"name":1}).exec((err,movies)=>{
         if(err)
         {
             return res.status(400).json({

@@ -112,7 +112,7 @@ const CreateMovie = () => {
                     <div className="bg-slate-100  rounded-lg shadow-lg">
 
                         <div className=" text-3xl text-black  text-center mt-4">
-                            CreateMovie form
+                            AddMovie form
                         </div>
                         <form>
                         <div className="mb-4 ml-8 mt-10">

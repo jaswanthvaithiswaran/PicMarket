@@ -23,8 +23,8 @@ exports.createTemplate = async (req,res)=>{
 
 exports.dailyUpload = (req,res)=>{
     
-    Template.find({}).exec((err,templates)=>{
-        console.log(templates);
+    Template.find({}).limit(100).exec((err,templates)=>{
+       
         if(err)
         {
             return res.status(400).json({

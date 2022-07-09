@@ -9,7 +9,7 @@ const AdminDashboard = ()=>{
                 
                 <div></div>
                     <div className="grid grid-rows-5 grid-flow-col gap-4">
-                        <div className="col-span-1 capitalize  bg-green-700 rounded-lg font-bold text-white text-center p-3">Create</div>
+                        <div className="col-span-1 capitalize  bg-green-700 rounded-lg font-bold text-white text-center p-3">Add</div>
                         <div className="col-span-1 capitalize text-center rounded-lg p-3 bg-gray-100">
                             <Link to="/movies/create" className="text-blue-500">Movies</Link>
                         </div>
