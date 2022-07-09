@@ -43,7 +43,7 @@ exports.getComedianById = (req,res,next,id)=>{
 }
 
 exports.getComedians = (req,res)=>{
-    Comedian.find().exec((err,comedians)=>{
+    Comedian.find().sort({"name":1}).exec((err,comedians)=>{
         if(err)
         {
             return res.status(400).json({

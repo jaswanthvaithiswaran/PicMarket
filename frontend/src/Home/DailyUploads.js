@@ -26,7 +26,7 @@ const DailyUploads = () => {
     return(
 
         <Base className="bg-grey-700">
-        <div className="grid grid-cols-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {templates.map((template,index)=>{
               return(
                   <div className="ml-[45px] mr-[45px] mt-[40px]">

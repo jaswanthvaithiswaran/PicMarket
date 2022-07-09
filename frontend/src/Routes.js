@@ -15,6 +15,7 @@ import Movies from "./Movies/Movies";
 import Actors from "./Actor/Actors";
 import ActorMovies from "./Actor/ActorMovies";
 import DailyUploads from "./Home/DailyUploads";
+import Comedians from "./Comedian/Comedians";
 
 const Routes = ()=>{
     return(
@@ -25,6 +26,7 @@ const Routes = ()=>{
             <Route path="/signin" exact component={Signin}/>
             <Route path="/movies" exact component ={Movies}/>
             <Route path="/actors" exact component={Actors}/>
+            <Route path="/comedians" exact component={Comedians}/>
             <Route path="/daily-uploads" exact component={DailyUploads}/>
             <Route path="/actor/movies/:actorId" exact component={ActorMovies}/>
             <Route path="/comedian/movies/:comedianId" exact component={ComedianMovies}/>
