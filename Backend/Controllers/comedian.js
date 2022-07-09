@@ -58,11 +58,11 @@ exports.getComedianMovies = (req,res)=>{
     const comedianId = req.comedian._id;
     const ObjectID = new ObjectId(comedianId);
 
-    console.log(ObjectID);
+   
     Movies.find({
         "comedian":ObjectID
     }).exec((err,movies)=>{
-        console.log(movies);
+        
         if(movies==null|| err)
         {
             return res.status(400).json({

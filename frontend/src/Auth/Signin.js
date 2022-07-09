@@ -63,8 +63,8 @@ const Signin = ()=>{
                             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                                 <h1 className="mb-8 text-3xl text-center">Login</h1>
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-envelope" className="mr-2 mt-1"/>
                                 <label >Email</label>
-                                <FontAwesomeIcon icon="fa-solid fa-envelope" className="ml-2 mt-1"/>
                                 </div>
                                 <input 
                                     type="text"
@@ -75,8 +75,8 @@ const Signin = ()=>{
                                     value={email}
                                      />
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-key" className="mr-2 mt-1" />
                                 <label >Password</label>
-                                <FontAwesomeIcon icon="fa-solid fa-key" className="ml-2 mt-1" />
                                 </div>
                                 <input 
                                     type="password"

@@ -54,7 +54,7 @@ exports.getActorMovies = (req,res)=>{
     const actorId = req.actor._id;
     const ObjectID = new ObjectId(actorId);
 
-    console.log(ObjectID);
+    
     Movies.find({
         "actor":ObjectID
     }).sort({"name":1}).exec((err,movies)=>{

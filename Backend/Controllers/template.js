@@ -3,7 +3,6 @@ const cloudinary = require("cloudinary").v2;
 
 exports.createTemplate = async (req,res)=>{
     template = new Template();
-    console.log(req.body.movie);
     let file = req.files.photo.tempFilePath;
     result = await cloudinary.uploader.upload(file,{folder:"templates"});
     template.movie = req.body.movie;

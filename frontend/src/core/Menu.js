@@ -25,16 +25,16 @@ const Menu=({
             
             <ul className="flex">
             
-              <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+              <li className="mr-14 mt-2 py-1 px-3  hover:text-blue-700 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
               <FontAwesomeIcon icon="fa-solid fa-house" className="mr-3"/>
-                <Link to="/" className="text-black text-center">Home</Link>
+                <Link to="/" className=" text-center">Home</Link>
               </li>
 
               {!isAuthenticated()&& (
                 <Fragment>
-                 <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                 <li className="mr-14 mt-2 py-1 px-3 hover:text-blue-700 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
                  <FontAwesomeIcon icon="fa-solid fa-right-to-bracket" className="mr-3" />
-                  <Link to="/signin" className="text-bold text-black text-center ">Login/Signup</Link>
+                  <Link to="/signin" className="text-bold  text-center ">Login/Signup</Link>
                 </li>
                   </Fragment>
               )}
@@ -42,16 +42,16 @@ const Menu=({
              
 
               {isAuthenticated() && isAuthenticated().user.role===1 && (
-                <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                <li className="mr-14 mt-2 py-1 px-3 hover:text-blue-700 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
                 <FontAwesomeIcon icon="fa-solid fa-circle-user" className="mr-2"/>
-                <Link to="/admin/dashboard" className="text-bold text-black text-center " >Admin Dashboard</Link>
+                <Link to="/admin/dashboard" className="text-bold  text-center " >Admin Dashboard</Link>
                </li>
               )}
               
               {isAuthenticated()&& (
-                <li className="mr-14 mt-2 py-1 px-3 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
+                <li className="mr-14 mt-2 py-1 px-3 hover:text-blue-700 hover:bg-black hover:rounded-2xl hover:backdrop-filter hover:backdrop-blur-lg hover:bg-opacity-30">
                 <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" className="mr-2"/>
-                <span className="text-bold text-black text-center cursor-pointer" onClick={()=>{
+                <span className="text-bold text-center cursor-pointer" onClick={()=>{
                   signout(()=>{
                     console.log("ready to redirect");
                     window.location.reload();

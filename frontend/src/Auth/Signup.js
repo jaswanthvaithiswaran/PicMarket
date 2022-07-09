@@ -99,8 +99,8 @@ const Signup = ()=>{
                             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                                 <h1 className="mb-8 text-3xl text-center">Sign up</h1>
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-user" className="mr-3 mt-1" />
                                 <label >Name</label>
-                                <FontAwesomeIcon icon="fa-solid fa-user" className="ml-3 mt-1" />
                                 </div>
                                 <input 
                                     type="text"
@@ -111,9 +111,8 @@ const Signup = ()=>{
                                     value={name}
                                      />
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-envelope" className="mr-3 mt-1" />
                                 <label >Email</label>
-                                <FontAwesomeIcon icon="fa-solid fa-envelope" className="ml-3 mt-1" />
-                                        
                                 </div>
                                 <input 
                                     type="text"
@@ -124,9 +123,8 @@ const Signup = ()=>{
                                     value={email}
                                      />
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-key" className="mr-3 mt-1"/>
                                 <label >Password</label>
-                                <FontAwesomeIcon icon="fa-solid fa-key" className="ml-3 mt-1"/>
-                                        
                                 </div>
                                 <input 
                                     type="password"
@@ -136,10 +134,10 @@ const Signup = ()=>{
                                     placeholder="Password" 
                                     value={password}
                                     />
+
                                 <div className="flex">
+                                <FontAwesomeIcon icon="fa-solid fa-lock-open" className="mr-3 mt-1"/>
                                 <label >Confirm Password</label>
-                                <FontAwesomeIcon icon="fa-solid fa-lock-open" className="ml-3 mt-1"/>
-                        
                                 </div>
                                 
                                 <input 
@@ -150,7 +148,7 @@ const Signup = ()=>{
                                     placeholder="Confirm Password" 
                                    
                                     />
-                                  <div className={passwordmatch?displayhidden:displayblock}>
+                                  <div className={passwordmatch?displayhidden:displayblock+"text-red-600"}>
                                     password doesnot match
                                   </div>
                                
