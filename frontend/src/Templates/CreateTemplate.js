@@ -14,11 +14,12 @@ const CreateTemplate = () => {
         formData:new FormData(),
         error: "",
         success:false,
+        Tags:"",
         successClass:"hidden text-2xl text-black place-content-center mt-10",
         errorMessageclass:"hidden text-2xl text-black place-content-center"
     });
     const [movies, setMovies] = useState([]);
-    const {photo,formData,error,successClass,errorMessageclass} = values;
+    const {photo,formData,error,successClass,errorMessageclass,Tags} = values;
 
 
     const handleChange =name=>event=>{
@@ -118,14 +119,22 @@ const CreateTemplate = () => {
 
                         <div className="mb-4 ml-8">
                             <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > movie </label>
-                            <select name="" onChange={handleChange("movie")} className="p-2 bg-white relative rounded text-sm w-3/4">
-                                <option value="">Select movie</option>
-                                {movies.map((movie,index)=>{
-                                    return(
-                                        <option key={index} value={movie._id}>{movie.name}</option>
-                                    )
-                                })}
-                            </select>
+                           <input list="movies" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("movie")}></input>
+                           <datalist id="movies">
+                            {movies.map((movie,index)=>{
+                                return(
+                                    <option key={index} value={movie._id}>{movie.name}</option>
+                                )
+                            }
+                            )}
+                            </datalist>
+                            <p className="text-gray-700 text-sm mt-2">. Movie input will be auto populated with movie id</p>
+                        </div>
+
+                        <div className="mb-4 ml-8 mt-10">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" >Tags</label>
+                            <input type="text" placeholder="Tags" accept ="image" onChange={handleChange("Tags")} value={Tags} name="Tags" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10"/>
+                            <p className="text-gray-700 text-sm mt-2">Enter comma separated Tags</p>
                         </div>
 
                         <div className="mb-4 ml-80 mt-10 ">

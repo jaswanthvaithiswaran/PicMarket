@@ -141,29 +141,31 @@ const CreateMovie = () => {
                         </div>
 
                         <div className="mb-4 ml-8">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" > Actor </label>
-                            <select name="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("actor")}>
-                                <option value="">Select Actor</option>
-                                {actors && actors.map((actor, index) => {
-                                    return (
-                                        <option key={index} value={actor._id}>{actor.name}</option>
-                                    )
-                                })}
-                            </select>
+                            <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > actor </label>
+                           <input list="actor" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("actor")}></input>
+                           <datalist id="actor">
+                            {actors.map((actor,index)=>{
+                                return(
+                                    <option key={index} value={actor._id}>{actor.name}</option>
+                                )
+                            }
+                            )}
+                            </datalist>
+                            <p className="text-gray-700 text-sm mt-2 capitalize">. actor name will be auto populated with actor id</p>
                         </div>
 
-                        <div className="mb-4 ml-8 comedians">
-                            <div className="comedian">
-                            <label className="block text-gray-700 text-sm font-bold mb-2" > Comedian </label>
-                            <select name="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("comedian")}>
-                                <option value="">Select comedian</option>
-                                {comedians && comedians.map((comedian, index) => {
-                                    return (
-                                        <option key={index} value={comedian._id}>{comedian.name}</option>
-                                    )
-                                })}
-                            </select>
-                            </div>
+                        <div className="mb-4 ml-8">
+                            <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > comedian </label>
+                           <input list="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("comedian")}></input>
+                           <datalist id="comedian">
+                            {comedians.map((comedian,index)=>{
+                                return(
+                                    <option key={index} value={comedian._id}>{comedian.name}</option>
+                                )
+                            }
+                            )}
+                            </datalist>
+                            <p className="text-gray-700 text-sm mt-2 capitalize">. comedian name will be auto populated with comedian id</p>
                         </div>
 
                       

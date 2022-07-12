@@ -22,7 +22,7 @@ exports.createTemplate = async (req,res)=>{
 
 exports.dailyUpload = (req,res)=>{
     
-    Template.find({}).limit(100).exec((err,templates)=>{
+    Template.find({}).sort({"updatedAt":1}).limit(100).exec((err,templates)=>{
        
         if(err)
         {
