@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Base from '../core/Base';
-import Card from "../Home/Card";
+import TemplateCard from "../Home/TemplateCard";
 import { getDailyUploads } from './dailyuploadsapi';
 
 const DailyUploads = () => {
@@ -25,20 +25,19 @@ const DailyUploads = () => {
     },[]);
     return(
 
-        <Base className="bg-grey-700">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <Base className="bg-grey-700 mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-5">
           {templates.map((template,index)=>{
               return(
-                  <div className="ml-[45px] mr-[45px] mt-[40px]">
-                    <a download={template.name} href={template.photo_location} >
-                  <Card 
+                  <div className="ml-[45px] mr-[45px] mt-[40px]" key={index}>
+                   
+                  <TemplateCard 
                   className="ml-[45px] mt-10"
                   name={template.name}
                   imgsrc={template.photo_location}
-                  
-                  key={index}
+                  index={index}
                   />
-                  </a>
+                  
                   </div>
                   
               )

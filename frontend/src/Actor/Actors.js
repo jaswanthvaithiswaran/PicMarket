@@ -26,8 +26,8 @@ const Actors = ()=>{
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {actors.map((actor,index)=>{
             return(
-              <div className="ml-[45px] mr-[45px]">
-                <Link to={`/actor/movies/${actor._id}`} key={index} className="">
+              <div className="ml-[45px] mr-[45px]" key={index}>
+                <Link to={`/actor/movies/${actor._id}`}  className="">
                 <Card 
                 name={actor.name}
                 imgsrc={actor.photo_location}

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { getMovieTemplates } from "./movieapicalls";
 import Base from "../core/Base";
-import Card from "../Home/Card";
+import TemplateCard from "../Home/TemplateCard";
 
 const MovieTemplates =({match})=>{
 
@@ -34,16 +34,16 @@ const MovieTemplates =({match})=>{
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
           {templates.map((template,index)=>{
               return(
-                  <div className="ml-[45px] mr-[45px] mt-[40px]">
-                    <a download={template.name} href={template.photo_location} >
-                  <Card 
+                  <div className="ml-[45px] mr-[45px] mt-[40px]" key={index}>
+                   
+                  <TemplateCard 
                   className="ml-[45px] mt-10"
                   name={template.name}
                   imgsrc={template.photo_location}
                   
-                  key={index}
+                  
                   />
-                  </a>
+                 
                   </div>
                   
               )

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const {check} = require("express-validator");
-const {signout,signup,signin,isSignedIn } = require("../controllers/auth");
+const {signout,signup,signin,isSignedIn } = require("../Controllers/auth");
 
 
 router.get("/signout",signout);
