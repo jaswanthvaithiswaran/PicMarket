@@ -25,7 +25,8 @@ mongoose.connect(process.env.DATABASE,
         useCreateIndex:true
     }).then(()=>{
         console.log("DB CONNECTED");
-    }).catch(()=>{
+    }).catch(err =>{
+        console.log(err);
         console.log("DB Connection failed!!");
     }
     );

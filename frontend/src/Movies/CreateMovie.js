@@ -6,6 +6,7 @@ import Base from "../core/Base";
 import { createMovies } from "./movieapicalls";
 
 
+
 const CreateMovie = () => {
 
     const {user,token} = isAuthenticated();
@@ -20,6 +21,8 @@ const CreateMovie = () => {
         successClass:"hidden text-2xl text-black place-content-center mt-10",
         
     });
+    const [comedianValues, setComedianValues] = useState([""]);
+
     const [actors,setActors] = useState([]);
     const [comedians,setComedians]= useState([]);
 
@@ -73,9 +76,22 @@ const CreateMovie = () => {
     },[]);
    
   
-    const onSubmit = event => {
+    const handleSubmit = event => {
        event.preventDefault();
        console.log("submitted");
+       
+       for (const pair of formData.entries()) {
+        if(pair[0]==="comedian")
+        {
+            console.log(`comedian ${pair[1]}`);
+        }
+        else
+        {
+            console.log(`${pair[0]}, ${pair[1]}`);
+        }
+        
+      }
+       /*
        createMovies(user._id,token,formData)
        .then(data=>{
            if(data.error)
@@ -86,7 +102,7 @@ const CreateMovie = () => {
                setValues({...values,name:"",photo:"",error:"",actorerror:"",comedianerror:"",formData:new FormData(),savedmovie:data.name,
                 successClass:"block text-2xl text-black place-content-center mt-10"})
            }
-       })
+       })*/
     }
 
     const successMessage = ()=>{
@@ -99,7 +115,30 @@ const CreateMovie = () => {
         )
     }
 
- 
+    const addComedianInput = event=>{
+        event.preventDefault();
+        setComedianValues([...comedianValues, ""]);
+    }
+
+    const removeComedianField = (index)=>event=>{
+        event.preventDefault();
+        let newComedianValues = [...comedianValues];
+        newComedianValues.splice(index, 1);
+        setComedianValues(newComedianValues)
+        formData.set("comedian",newComedianValues);
+    }
+    
+    const handleComedianChange = index=>event=>{
+        let newComedianValues = [...comedianValues];
+        
+            newComedianValues.pop();
+            
+        
+    
+        newComedianValues.push(event.target.value);
+        setComedianValues(newComedianValues);
+        formData.set("comedian",newComedianValues);
+    }
 
     const createMovieForm = () => {
         return(
@@ -107,14 +146,14 @@ const CreateMovie = () => {
             
 
                 <div className="grid grid-cols-3 gap-7 mt-20 mb-20">
-                    <div ></div>
+                   <div></div>
 
                     <div className="bg-slate-100  rounded-lg shadow-lg">
 
                         <div className=" text-3xl text-black  text-center mt-4">
                             AddMovie form
                         </div>
-                        <form>
+                        <form onSubmit={handleSubmit} >
                         <div className="mb-4 ml-8 mt-10">
                             <label className="block text-gray-700 text-sm font-bold mb-2" >
                                 Movie name
@@ -153,25 +192,40 @@ const CreateMovie = () => {
                             </datalist>
                             <p className="text-gray-700 text-sm mt-2 capitalize">. actor name will be auto populated with actor id</p>
                         </div>
+                        <label className="block text-gray-700 text-sm font-bold mb-2 ml-8 capitalize" > comedians </label>
+                        
+                        {comedianValues.map((element,index)=>{
+                            return(
+                             <div className="mb-4 ml-8 flex" key={index}>
+                                <input list="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleComedianChange(index)}></input>
+                                {
+                                index ? 
+                                <button type="button"  className="rounded-lg bg-red-500 hover:bg-red-600 p-2 ml-2" onClick={removeComedianField(index)}>Remove</button> 
+                                : null
+                                 }
+                            </div>
+                            )
+                        })}
 
-                        <div className="mb-4 ml-8">
-                            <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > comedian </label>
-                           <input list="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("comedian")}></input>
-                           <datalist id="comedian">
-                            {comedians.map((comedian,index)=>{
-                                return(
-                                    <option key={index} value={comedian._id}>{comedian.name}</option>
-                                )
-                            }
-                            )}
-                            </datalist>
-                            <p className="text-gray-700 text-sm mt-2 capitalize">. comedian name will be auto populated with comedian id</p>
+                        <p className="text-gray-700 text-sm mb-4 ml-8 mt-2 capitalize">. comedian name will be auto populated with comedian id</p>
+                        <datalist id="comedian">
+                             {comedians.map((comedian,index)=>{
+                                 return(
+                                     <option key={index} value={comedian._id}>{comedian.name}</option>
+                                 )
+                             }
+                             )}
+                        </datalist>
+                       
+                        
+
+                        <div className="mb-4 ml-80">
+                            <button className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 " onClick={addComedianInput}>Add comedian</button>
                         </div>
-
                       
 
                         <div className="mb-4 ml-80 mt-10 ">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " onClick={onSubmit}>Submit</button>
+                            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " type="submit" >Submit</button>
                         </div>
                         </form>
                        
