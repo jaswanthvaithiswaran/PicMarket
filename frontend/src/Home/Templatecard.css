@@ -11,13 +11,16 @@
     width: 350px;
     height: 270px;
     
-  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
     cursor: pointer;
     transition: 0.4s;
     background-color: #272727;
     align-items: center;
   }
-  
+  .Templatecard:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
   .Templatecard .Templatecard_image {
     width: inherit;
     height: inherit;

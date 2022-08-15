@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react";
+import { Link } from "react-router-dom";
 import { getMovieTemplates } from "./movieapicalls";
 import Base from "../core/Base";
 import TemplateCard from "../Home/TemplateCard";
@@ -36,14 +37,13 @@ const MovieTemplates =({match})=>{
               return(
                   <div className="ml-[45px] mr-[45px] mt-[40px]" key={index}>
                    
+                <Link to={`/template/${template._id}`}>
                   <TemplateCard 
                   className="ml-[45px] mt-10"
                   name={template.name}
                   imgsrc={template.photo_location}
-                  
-                  
                   />
-                 
+                 </Link>
                   </div>
                   
               )

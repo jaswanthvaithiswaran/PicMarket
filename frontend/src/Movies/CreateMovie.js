@@ -21,7 +21,7 @@ const CreateMovie = () => {
         successClass:"hidden text-2xl text-black place-content-center mt-10",
         
     });
-    const [comedianValues, setComedianValues] = useState([]);
+    const [comedianValues, setComedianValues] = useState([1]);
 
     const [actors,setActors] = useState([]);
     const [comedians,setComedians]= useState([]);

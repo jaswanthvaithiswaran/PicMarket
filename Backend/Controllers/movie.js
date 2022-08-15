@@ -2,6 +2,7 @@ const Movie = require("../models/movie");
 const cloudinary = require('cloudinary').v2;
 const ObjectId = require('mongodb').ObjectId;
 const Templates = require("../models/template");
+
 exports.createMovie = async (req,res)=>{
     let file = req.files.photo.tempFilePath;
 

@@ -14,3 +14,12 @@ export const createTemplate = (userId, token, template) => {
     })
     .catch(err => console.log(err));
 }
+
+export const getTemplate= id=>{
+    return fetch(`${API}/template/${id}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    }).catch(err => console.log(err));
+}

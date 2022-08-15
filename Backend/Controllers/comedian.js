@@ -60,7 +60,7 @@ exports.getComedianMovies = (req,res)=>{
 
    
     Movies.find({
-        "comedian":ObjectID
+        "_comedianId":ObjectID
     }).exec((err,movies)=>{
         
         if(movies==null|| err)

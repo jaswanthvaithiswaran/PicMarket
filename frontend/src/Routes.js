@@ -16,6 +16,7 @@ import Actors from "./Actor/Actors";
 import ActorMovies from "./Actor/ActorMovies";
 import DailyUploads from "./Home/DailyUploads";
 import Comedians from "./Comedian/Comedians";
+import Template from "./Templates/Template";
 
 const Routes = ()=>{
     return(
@@ -31,6 +32,7 @@ const Routes = ()=>{
             <Route path="/actor/movies/:actorId" exact component={ActorMovies}/>
             <Route path="/comedian/movies/:comedianId" exact component={ComedianMovies}/>
             <Route path="/movie/templates/:movieId" exact component={MovieTemplates}/>
+            <Route path = "/template/:templateId" exact component={Template}/>
             <AdminRoutes path="/admin/dashboard" exact component={AdminDashboard}/>
             <AdminRoutes path="/movies/create" exact component={CreateMovie}/>
             <AdminRoutes path="/comedian/create" exact component={CreateComedian}/>

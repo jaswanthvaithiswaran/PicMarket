@@ -22,7 +22,7 @@ exports.createTemplate = async (req,res)=>{
 
 exports.dailyUpload = (req,res)=>{
     
-    Template.find({}).sort({"updatedAt":1}).limit(100).exec((err,templates)=>{
+    Template.find({}).sort({"updatedAt":-1}).limit(100).exec((err,templates)=>{
        
         if(err)
         {
@@ -33,4 +33,28 @@ exports.dailyUpload = (req,res)=>{
         return res.json(templates);
     });
 
+}
+exports.getTemplateById = (req,res,next,id)=>{
+    Template.findById(id).populate({
+        path:"movie",
+        populate:{
+            path:"actor"
+        },
+        populate:{
+            path:"comedian"
+        }
+    }).exec((err,template)=>{
+        if(err)
+        {
+            return res.status(400).json({
+                "error":"no template found"
+            })
+        }
+        req.template = template;
+        next();
+    } )
+}
+exports.getTemplate = (req,res)=>{
+
+    return res.json(req.template);
 }
