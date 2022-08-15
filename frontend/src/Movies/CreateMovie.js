@@ -21,7 +21,7 @@ const CreateMovie = () => {
         successClass:"hidden text-2xl text-black place-content-center mt-10",
         
     });
-    const [comedianValues, setComedianValues] = useState([""]);
+    const [comedianValues, setComedianValues] = useState([]);
 
     const [actors,setActors] = useState([]);
     const [comedians,setComedians]= useState([]);
@@ -79,19 +79,12 @@ const CreateMovie = () => {
     const handleSubmit = event => {
        event.preventDefault();
        console.log("submitted");
+
+       for(let key of formData.entries())
+       {
+           console.log(key[0]+":"+key[1]);
+       }
        
-       for (const pair of formData.entries()) {
-        if(pair[0]==="comedian")
-        {
-            console.log(`comedian ${pair[1]}`);
-        }
-        else
-        {
-            console.log(`${pair[0]}, ${pair[1]}`);
-        }
-        
-      }
-       /*
        createMovies(user._id,token,formData)
        .then(data=>{
            if(data.error)
@@ -102,7 +95,7 @@ const CreateMovie = () => {
                setValues({...values,name:"",photo:"",error:"",actorerror:"",comedianerror:"",formData:new FormData(),savedmovie:data.name,
                 successClass:"block text-2xl text-black place-content-center mt-10"})
            }
-       })*/
+       })
     }
 
     const successMessage = ()=>{
@@ -117,7 +110,9 @@ const CreateMovie = () => {
 
     const addComedianInput = event=>{
         event.preventDefault();
-        setComedianValues([...comedianValues, ""]);
+        let newComedianValues = [...comedianValues];
+        newComedianValues.push(1);
+        setComedianValues(newComedianValues);
     }
 
     const removeComedianField = (index)=>event=>{
@@ -130,11 +125,7 @@ const CreateMovie = () => {
     
     const handleComedianChange = index=>event=>{
         let newComedianValues = [...comedianValues];
-        
-            newComedianValues.pop();
-            
-        
-    
+        newComedianValues.pop();
         newComedianValues.push(event.target.value);
         setComedianValues(newComedianValues);
         formData.set("comedian",newComedianValues);
@@ -148,7 +139,7 @@ const CreateMovie = () => {
                 <div className="grid grid-cols-3 gap-7 mt-20 mb-20">
                    <div></div>
 
-                    <div className="bg-slate-100  rounded-lg shadow-lg">
+                    <div className="bg-slate-200  rounded-lg shadow-lg">
 
                         <div className=" text-3xl text-black  text-center mt-4">
                             AddMovie form
@@ -181,7 +172,7 @@ const CreateMovie = () => {
 
                         <div className="mb-4 ml-8">
                             <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > actor </label>
-                           <input list="actor" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("actor")}></input>
+                           <input list="actor" placeholder="Actor name/ _id" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10" onChange={handleChange("actor")}></input>
                            <datalist id="actor">
                             {actors.map((actor,index)=>{
                                 return(
@@ -197,10 +188,10 @@ const CreateMovie = () => {
                         {comedianValues.map((element,index)=>{
                             return(
                              <div className="mb-4 ml-8 flex" key={index}>
-                                <input list="comedian" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleComedianChange(index)}></input>
+                                <input list="comedian" placeholder="Comedian name/ _id" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10" onChange={handleComedianChange(index)}></input>
                                 {
                                 index ? 
-                                <button type="button"  className="rounded-lg bg-red-500 hover:bg-red-600 p-2 ml-2" onClick={removeComedianField(index)}>Remove</button> 
+                                <button type="button"  className="rounded-lg bg-red-500 hover:bg-red-600 p-1 ml-2" onClick={removeComedianField(index)}>Remove</button> 
                                 : null
                                  }
                             </div>
@@ -219,8 +210,8 @@ const CreateMovie = () => {
                        
                         
 
-                        <div className="mb-4 ml-80">
-                            <button className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 " onClick={addComedianInput}>Add comedian</button>
+                        <div className="mb-4 ml-80 flex">
+                            <button className="bg-blue-600 text-white p-2  rounded-lg hover:bg-blue-700 flex" onClick={addComedianInput}>Add comedian</button>
                         </div>
                       
 

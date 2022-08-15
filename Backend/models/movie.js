@@ -11,15 +11,12 @@ const movieSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    actor:{
+    _actorId:{
         type:ObjectId,
         ref:"Actor",
         
     },
-    comedian:{
-        type:ObjectId,
-        ref:"Comedian"
-    }
+    _comedianId:[ObjectId]
 },{timestamps:true})
 
 module.exports = mongoose.model("Movie",movieSchema);

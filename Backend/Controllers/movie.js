@@ -9,8 +9,20 @@ exports.createMovie = async (req,res)=>{
         {folder:"movies"})
     movie = new Movie();
     movie.name = req.body.name;
-    movie.actor = req.body.actor;
-    movie.comedian = req.body.comedian;
+    movie._actorId = req.body.actor;
+    console.log(req.body.comedian);
+    let comedians = req.body.comedian;
+    if(comedians.length > 0){
+        comedianArray = comedians.split(",");
+    [...comedianArray].forEach(comedian=>{
+        if(comedian!=="1"){
+        movie._comedianId.push(comedian);
+        }
+    })
+    }
+    
+   console.log(movie)
+    
     movie.photo_location = result.secure_url;
 
     movie.save((err,movie)=>{
