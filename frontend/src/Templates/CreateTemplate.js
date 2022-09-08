@@ -134,7 +134,7 @@ const CreateTemplate = () => {
                         <div className="mb-4 ml-8 mt-10">
                             <label className="block text-gray-700 text-sm font-bold mb-2" >Tags</label>
                             <input type="text" placeholder="Tags" accept ="image" onChange={handleChange("Tags")} value={Tags} name="Tags" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10"/>
-                            <p className="text-gray-700 text-sm mt-2">Enter comma separated Tags</p>
+                            <p className="text-gray-700 text-sm mt-2">Enter space separated Tags</p>
                         </div>
 
                         <div className="mb-4 ml-80 mt-10 ">

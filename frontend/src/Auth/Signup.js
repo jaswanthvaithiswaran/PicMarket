@@ -15,27 +15,27 @@ const Signup = ()=>{
             success:false,
             displayblock:"block",
             displayhidden:"hidden",
-            passwordmatch:true,
+            confirmpasswordmatch:true,
            
         }
     )
-    const {name,password,email,error,success,displayblock,displayhidden,passwordmatch} = values;
+    const {name,password,email,error,success,displayblock,displayhidden,confirmpasswordmatch} = values;
     const handleChange = name=>event=>{
         setValues({...values,error:false,[name]:event.target.value});
         
     }
 
     
-    //TODO: confirm password bug
+    
     const handlechangeconfirmpassword= name=>event=>{
       
         if(event.target.value!==password)
        {
-          setValues({...values,passwordmatch:false})
+          setValues({...values,confirmpasswordmatch:false})
        }
        else
        {
-           setValues({...values,passwordmatch:true})
+           setValues({...values,confirmpasswordmatch:true})
        }
       
         
@@ -144,14 +144,15 @@ const Signup = ()=>{
                                     type="password"
                                     className="block border border-grey-light w-full p-3 rounded mb-4"
                                     name="confirm_password"
-                                    onChange={handlechangeconfirmpassword("confirmpassword")}
+                                    onKeyUp={handlechangeconfirmpassword("confirmpassword")}
                                     placeholder="Confirm Password" 
-                                   
-                                    />
-                                  <div className={passwordmatch?displayhidden:displayblock+"text-red-600"}>
-                                    password doesnot match
-                                  </div>
-                               
+                                />
+                                {confirmpasswordmatch?
+                                <></>
+                                 :<div className="text-red-600 font-semibold">
+                                 confirm password doesnot match
+                                </div>
+                                 }
                                 <button
                                     type="submit"
                                     className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"

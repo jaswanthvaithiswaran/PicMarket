@@ -6,6 +6,7 @@ exports.createTemplate = async (req,res)=>{
     let file = req.files.photo.tempFilePath;
     result = await cloudinary.uploader.upload(file,{folder:"templates"});
     template.movie = req.body.movie;
+    template._tags = req.body.Tags;
     template.photo_location = result.secure_url;
     template.save((err,template)=>{
         if(err){

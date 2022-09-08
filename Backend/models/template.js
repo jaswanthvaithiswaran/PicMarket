@@ -12,8 +12,8 @@ const templateSchema = new mongoose.Schema({
         required:true
     },
     _tags:{
-        type:Array,
-        default:[]
+        type:String,
+        required:true
     }
 },{timestamps:true});
 

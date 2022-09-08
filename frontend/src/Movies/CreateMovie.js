@@ -136,7 +136,7 @@ const CreateMovie = () => {
            
             
 
-                <div className="grid grid-cols-3 gap-7 mt-20 mb-20">
+                <div className="grid lg:grid-cols-3   gap-7 mt-20 mb-20">
                    <div></div>
 
                     <div className="bg-slate-200  rounded-lg shadow-lg">
@@ -210,14 +210,15 @@ const CreateMovie = () => {
                        
                         
 
-                        <div className="mb-4 ml-80 flex">
+                        <div className="mb-4 float-right flex">
                             <button className="bg-blue-600 text-white p-2  rounded-lg hover:bg-blue-700 flex" onClick={addComedianInput}>Add comedian</button>
                         </div>
                       
-
-                        <div className="mb-4 ml-80 mt-10 ">
+                        <center>
+                        <div className="mb-4  mt-10 ">
                             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " type="submit" >Submit</button>
                         </div>
+                        </center>
                         </form>
                        
                     </div>
