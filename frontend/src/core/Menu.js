@@ -14,7 +14,8 @@ const Menu=({
       <div className="sticky top-0 z-10 bg-white backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
         <div className="">
         <div className="flex ">
-          <div className="   text-center md:w-1/4 h-12">
+         
+          <div className="   text-center md:w-2/4 h-12">
             <h1 className="text-black text-left text-md md:text-3xl text-bold  ml-6 mt-2">
               <Link to="/">Meme templates</Link>
             </h1>

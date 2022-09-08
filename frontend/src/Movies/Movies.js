@@ -34,7 +34,7 @@ const Movies = ()=>{
     return(
         
             <Base className="bg-grey-700">
-                <div className="searchgrid grid grid-cols-3">
+                <div className="searchgrid sm:grid sm:grid-cols-3">
                     <div></div>
                     <div className="searchbar mt-2 flex ml-9 ">
                         <input type="search" className="form-control relative flex-auto min-w-0 block w-[200px] md:w-60 md:h-10 px-5 py-1 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search movies" aria-label="Search" aria-describedby="button-addon2" onChange={handleChange("moviename")}/>
@@ -81,7 +81,7 @@ const Movies = ()=>{
             
         })
         }  
-        {}
+        
       </div>
             
         
