@@ -4,11 +4,11 @@ import { getActors } from "../Actor/actorapicalls";
 import { getComedians } from "../Comedian/comedianapicalls";
 import Base from "../core/Base";
 import { createMovies } from "./movieapicalls";
-
+import Autocomplete  from "../core/AutoComplete";
 
 
 const CreateMovie = () => {
-
+    var ActorMap = new Map();
     const {user,token} = isAuthenticated();
     const [values, setValues] = useState({
         name: "",
@@ -19,6 +19,7 @@ const CreateMovie = () => {
         error:"",
         savedmovie:"",
         successClass:"hidden text-2xl text-black place-content-center mt-10",
+        actorName:""
         
     });
     const [comedianValues, setComedianValues] = useState([1]);
@@ -26,11 +27,14 @@ const CreateMovie = () => {
     const [actors,setActors] = useState([]);
     const [comedians,setComedians]= useState([]);
 
-    const {name,photo,actorerror,comedianerror,formData,error,successClass,savedmovie} = values;
+    const {name,photo,actorerror,comedianerror,formData,error,successClass,savedmovie,actorName} = values;
     
 
 
-    
+    const ActorName = name=>{
+        setValues(values=>({...values,actorName:name}));
+        console.log(actorName);
+    }
 
     
     const handleChange = name =>event=>{
@@ -42,50 +46,68 @@ const CreateMovie = () => {
 
     
 
-    const loadActors = () => {
-        getActors()
-        .then(data => {
-            if (data.error) {
-                setValues({ ...values, actorerror: data.error });
-            } else {
-              setActors(data);
-            }
-            
-        })
-    }
-    const loadComedians = () => {
-        getComedians()
-        .then(data => {
-            if (data.error) {
-                setValues({ ...values, comedianerror: data.error });
-            } else {
-                
-               setComedians(data);
-               
-            }
-        })
-    }
+   
+    
+    
     useEffect(()=>{
+        const loadActors = () => {
+            getActors()
+            .then(data => {
+                if (data.error) {
+                    setValues(values=>({...values,actorerror:data.error}));
+                } else {
+                  setActors(data);
+                }
+                
+            })
+        }
         loadActors();
         
 
     },[]);
     useEffect(()=>{
+        const loadComedians = () => {
+            getComedians()
+            .then(data => {
+                if (data.error) {
+                    setValues(values=>({ ...values, comedianerror: data.error }));
+                } else {
+                    
+                   setComedians(data);
+                   
+                }
+            })
+        }
         loadComedians();
         
     },[]);
-   
+    useEffect(()=>{
+        
+        const MapActors = () => {
+        
+            actors.forEach((actor) => {
+                ActorMap.set(actor.name,actor._id);
+              
+            });
+            console.log(ActorMap);
+           
+        }
+        MapActors();
+        
+    },[actors]);
   
     const handleSubmit = event => {
        event.preventDefault();
        console.log("submitted");
-
+       console.log(typeof(actorName));
+       console.log(ActorMap.has('Vijaykanth'));
+        formData.set("_actorId",ActorMap.get(actorName));
        for(let key of formData.entries())
        {
            console.log(key[0]+":"+key[1]);
        }
        
-       createMovies(user._id,token,formData)
+       /*createMovies(user._id,token,formData)
        .then(data=>{
            if(data.error)
            {
@@ -95,7 +117,7 @@ const CreateMovie = () => {
                setValues({...values,name:"",photo:"",error:"",actorerror:"",comedianerror:"",formData:new FormData(),savedmovie:data.name,
                 successClass:"block text-2xl text-black place-content-center mt-10"})
            }
-       })
+       })*/
     }
 
     const successMessage = ()=>{
@@ -134,12 +156,13 @@ const CreateMovie = () => {
     const createMovieForm = () => {
         return(
            
-            
+           
 
                 <div className="grid lg:grid-cols-3   gap-7 mt-20 mb-20">
+                     
                    <div></div>
-
-                    <div className="bg-slate-200  rounded-lg shadow-lg">
+                  
+                    <div className=" bg-[#DAD4FE] rounded-lg shadow-2xl">
 
                         <div className=" text-3xl text-black  text-center mt-4">
                             AddMovie form
@@ -172,17 +195,9 @@ const CreateMovie = () => {
 
                         <div className="mb-4 ml-8">
                             <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > actor </label>
-                           <input list="actor" placeholder="Actor name/ _id" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10" onChange={handleChange("actor")}></input>
-                           <datalist id="actor">
-                            {actors.map((actor,index)=>{
-                                return(
-                                    <option key={index} value={actor._id}>{actor.name}</option>
-                                )
-                            }
-                            )}
-                            </datalist>
-                            <p className="text-gray-700 text-sm mt-2 capitalize">. actor name will be auto populated with actor id</p>
+                            <Autocomplete suggestions={actors} getData={ActorName}/>
                         </div>
+                       
                         <label className="block text-gray-700 text-sm font-bold mb-2 ml-8 capitalize" > comedians </label>
                         
                         {comedianValues.map((element,index)=>{
@@ -213,7 +228,7 @@ const CreateMovie = () => {
                         <div className="mb-4 float-right flex">
                             <button className="bg-blue-600 text-white p-2  rounded-lg hover:bg-blue-700 flex" onClick={addComedianInput}>Add comedian</button>
                         </div>
-                      
+                        
                         <center>
                         <div className="mb-4  mt-10 ">
                             <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline " type="submit" >Submit</button>

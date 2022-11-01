@@ -73,6 +73,7 @@ const Actors = ()=>{
                 </Link>
                 </div>)
             }
+            
         })
         }
          </div>
