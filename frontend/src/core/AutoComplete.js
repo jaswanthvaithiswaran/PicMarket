@@ -109,6 +109,7 @@ class Autocomplete extends Component {
             onChange={onChange("input")}
             onKeyDown={onKeyDown}
             value={userInput}
+            placeholder={this.props.placeholder}
             className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10"
           />
           {suggestionsListComponent}

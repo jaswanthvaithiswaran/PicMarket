@@ -3,7 +3,7 @@ import { isAuthenticated } from "../Auth/authapicalls";
 import Base from "../core/Base";
 import { getMovies } from "../Movies/movieapicalls";
 import { createTemplate } from "./templateapicalls";
-
+import Autocomplete from "../core/AutoComplete";
 
 const CreateTemplate = () => {
 
@@ -19,9 +19,12 @@ const CreateTemplate = () => {
         errorMessageclass:"hidden text-2xl text-black place-content-center"
     });
     const [movies, setMovies] = useState([]);
-    const {photo,formData,error,successClass,errorMessageclass,Tags} = values;
+    const {photo,formData,error,successClass,errorMessageclass,Tags,movie} = values;
 
-
+    const MovieName = name=>{
+        setValues(values=>({...values,movie:name}));
+        
+    }
     const handleChange =name=>event=>{
         const value = name === "photo" ? event.target.files[0] : event.target.value;
         formData.set(name,value);
@@ -119,16 +122,7 @@ const CreateTemplate = () => {
 
                         <div className="mb-4 ml-8">
                             <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > movie </label>
-                           <input list="movies" className="p-2 bg-white relative rounded text-sm w-3/4" onChange={handleChange("movie")}></input>
-                           <datalist id="movies">
-                            {movies.map((movie,index)=>{
-                                return(
-                                    <option key={index} value={movie._id}>{movie.name}</option>
-                                )
-                            }
-                            )}
-                            </datalist>
-                            <p className="text-gray-700 text-sm mt-2">. Movie input will be auto populated with movie id</p>
+                            <Autocomplete suggestions={movies} getData={MovieName} placeholder="Movie name"/>
                         </div>
 
                         <div className="mb-4 ml-8 mt-10">

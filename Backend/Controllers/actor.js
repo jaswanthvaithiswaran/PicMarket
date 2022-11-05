@@ -56,7 +56,7 @@ exports.getActorMovies = (req,res)=>{
 
     
     Movies.find({
-        "actor":ObjectID
+        "_actorId":ObjectID
     }).sort({"name":1}).exec((err,movies)=>{
         
         if(movies==null|| err)

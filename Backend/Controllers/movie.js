@@ -5,6 +5,9 @@ const Templates = require("../models/template");
 
 exports.createMovie = async (req,res)=>{
     let file = req.files.photo.tempFilePath;
+    console.log(file);
+    console.log(req.body);
+    
 
     result = await cloudinary.uploader.upload(file,
         {folder:"movies"})
@@ -13,6 +16,7 @@ exports.createMovie = async (req,res)=>{
     movie._actorId = req.body.actor;
     console.log(req.body.comedian);
     let comedians = req.body.comedian;
+    if(comedians!=null){
     if(comedians.length > 0){
         comedianArray = comedians.split(",");
     [...comedianArray].forEach(comedian=>{
@@ -20,6 +24,7 @@ exports.createMovie = async (req,res)=>{
         movie._comedianId.push(comedian);
         }
     })
+    }
     }
     
    console.log(movie)
@@ -35,6 +40,7 @@ exports.createMovie = async (req,res)=>{
         }
         return res.json(movie);
     })
+    
 }
 
 exports.getMovieById = (req,res,next,id)=>{

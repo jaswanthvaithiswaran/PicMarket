@@ -8,7 +8,8 @@ import Autocomplete  from "../core/AutoComplete";
 
 
 const CreateMovie = () => {
-    var ActorMap = new Map();
+    const [ActorMap,setActorMap] = useState(new Map());
+    const [ComedianMap,setComedianMap] = useState(new Map());
     const {user,token} = isAuthenticated();
     const [values, setValues] = useState({
         name: "",
@@ -19,7 +20,10 @@ const CreateMovie = () => {
         error:"",
         savedmovie:"",
         successClass:"hidden text-2xl text-black place-content-center mt-10",
-        actorName:""
+        actorName:"",
+        Actorerror:"",
+        comedianName:[],
+        Comedianerror:""
         
     });
     const [comedianValues, setComedianValues] = useState([1]);
@@ -27,13 +31,19 @@ const CreateMovie = () => {
     const [actors,setActors] = useState([]);
     const [comedians,setComedians]= useState([]);
 
-    const {name,photo,actorerror,comedianerror,formData,error,successClass,savedmovie,actorName} = values;
+    const {name,photo,Actorerror,comedianerror,formData,error,successClass,savedmovie,actorName,comedianName} = values;
     
 
 
     const ActorName = name=>{
         setValues(values=>({...values,actorName:name}));
-        console.log(actorName);
+       
+    }
+
+    const ComedianName = name=>{
+        let comedians = comedianName;
+        comedians.push(name);
+        setValues(values=>({...values,comedianName:comedians}));
     }
 
     
@@ -86,28 +96,58 @@ const CreateMovie = () => {
         const MapActors = () => {
         
             actors.forEach((actor) => {
-                ActorMap.set(actor.name,actor._id);
+                
+                let map = ActorMap;
+                map.set(actor.name,actor._id);
+                setActorMap(map);
               
             });
-            console.log(ActorMap);
+           
            
         }
         MapActors();
         
     },[actors]);
+    useEffect(()=>{
+        const MapComedians = () => {
+            comedians.forEach((comedian)=>{
+                let map = ComedianMap;
+                map.set(comedian.name,comedian._id);
+                setComedianMap(map);
+            })
+        }
+        MapComedians();
+    },[comedians])
   
     const handleSubmit = event => {
        event.preventDefault();
-       console.log("submitted");
-       console.log(typeof(actorName));
-       console.log(ActorMap.has('Vijaykanth'));
-        formData.set("_actorId",ActorMap.get(actorName));
+        if(ActorMap.has(actorName)){
+        formData.set("actor",ActorMap.get(actorName));
+        }
+        else{
+            setValues(values=>({...values,Actorerror:"Enter a valid Actor Name from drop down"}));
+            return;
+        }
+        if(comedianName.length>0){
+            let comedianId = [];
+            comedianName.forEach((name)=>{
+                if(ComedianMap.has(name)){
+                    comedianId.push(ComedianMap.get(name));
+                }
+                else{
+                    setValues(values=>({...values,Comedianerror:"Enter a valid Comedian Name from drop down"}));
+                    return;
+                }
+            })
+            formData.set("comedian",comedianId);
+        }
+
        for(let key of formData.entries())
        {
            console.log(key[0]+":"+key[1]);
        }
        
-       /*createMovies(user._id,token,formData)
+       createMovies(user._id,token,formData)
        .then(data=>{
            if(data.error)
            {
@@ -117,7 +157,7 @@ const CreateMovie = () => {
                setValues({...values,name:"",photo:"",error:"",actorerror:"",comedianerror:"",formData:new FormData(),savedmovie:data.name,
                 successClass:"block text-2xl text-black place-content-center mt-10"})
            }
-       })*/
+       })
     }
 
     const successMessage = ()=>{
@@ -145,13 +185,7 @@ const CreateMovie = () => {
         formData.set("comedian",newComedianValues);
     }
     
-    const handleComedianChange = index=>event=>{
-        let newComedianValues = [...comedianValues];
-        newComedianValues.pop();
-        newComedianValues.push(event.target.value);
-        setComedianValues(newComedianValues);
-        formData.set("comedian",newComedianValues);
-    }
+   
 
     const createMovieForm = () => {
         return(
@@ -195,15 +229,15 @@ const CreateMovie = () => {
 
                         <div className="mb-4 ml-8">
                             <label className="block text-gray-700 text-sm font-bold mb-2 capitalize" > actor </label>
-                            <Autocomplete suggestions={actors} getData={ActorName}/>
+                            <Autocomplete suggestions={actors} getData={ActorName} placeholder="Actor Name"/>
                         </div>
-                       
+                       {Actorerror && <div className="text-red-500 bold ml-8">{Actorerror}</div>}
                         <label className="block text-gray-700 text-sm font-bold mb-2 ml-8 capitalize" > comedians </label>
                         
                         {comedianValues.map((element,index)=>{
                             return(
-                             <div className="mb-4 ml-8 flex" key={index}>
-                                <input list="comedian" placeholder="Comedian name/ _id" className="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border-0 shadow  focus:outline-none focus:ring  w-3/4 pr-10" onChange={handleComedianChange(index)}></input>
+                             <div className="mb-4 ml-8 " key={index}>
+                                <Autocomplete suggestions={comedians} getData={ComedianName} placeholder="Comedian Name"/>
                                 {
                                 index ? 
                                 <button type="button"  className="rounded-lg bg-red-500 hover:bg-red-600 p-1 ml-2" onClick={removeComedianField(index)}>Remove</button> 
